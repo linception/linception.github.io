@@ -1,7 +1,7 @@
 ---
 title: Docker 方式安装 Elasticsearch
 tag: Elasticsearch
-category: Javar
+category: Javar 333333333333333z
 ---
 
 
