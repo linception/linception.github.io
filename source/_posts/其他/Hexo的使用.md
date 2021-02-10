@@ -2,6 +2,7 @@
 title: Hexo 使用
 category: 其他
 tag: Hexo
+
 ---
 
 # Hexo 使用
@@ -222,9 +223,49 @@ jobs:
           branch: master
 ```
 
+## 图片
+
+### 方式一
+
+图片全放在 `source/images` 下，以绝对路径方式引用 `/images/xxx.png`，同时 typora `格式->图像->设置图片根目录` 设置为 `source` 目录
+
+### 方式二
+
+设置 `post_asset_folder: true`，图片存放在 `filename` 文件夹下，这样图片会被拷贝到文件同级目录
+
+再安装下面插件
+
+```bash
+npm install hexo-asset-image --save
+npm install hexo-simple-image --save
+npm install hexo-typora-image --save
+npm install hexo-image-link --save
+```
+
+最简单是用预装的 `hexo-renderer-marked` 插件，直接配置
+
+```yaml
+marked:
+  prependRoot: true
+  postAsset: true
+```
+
+### 方式三
+
+```
+{% asset_img image_name.jpg This is an image %}
+```
+
+> 不爽的地方：
+>
+> 1. 必须建立一个与文件名同名的文件夹存放资源，`post_asset_folder` 设置才会拷贝
+> 2. 文件名不能有空格，不过 title 可以有，并且可以不和文件名一致
+
 ## 参考
 
 - [官方文档](https://hexo.io/zh-cn/docs/)
+- [资源文件夹](https://hexo.io/zh-cn/docs/asset-folders.html)
 - [Hexo博客NexT主题下添加分类、标签、关于菜单项](https://blog.csdn.net/mqdxiaoxiao/article/details/93644533)
-
 - [GitHub Actions入门教程：自动化部署静态博客](https://jishuin.proginn.com/p/763bfbd38928)
+
+- [hexo 图片显示问题及使用typora设置图片路径](https://cloud.tencent.com/developer/article/1702112)
