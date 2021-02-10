@@ -110,6 +110,10 @@ font:
   	
 # 样式
 scheme: Gemini
+
+# 展开所有目录
+toc:
+  expand_all: true
 ```
 
 ### 开启分类、标签和关于
@@ -269,3 +273,4 @@ marked:
 - [GitHub Actions入门教程：自动化部署静态博客](https://jishuin.proginn.com/p/763bfbd38928)
 
 - [hexo 图片显示问题及使用typora设置图片路径](https://cloud.tencent.com/developer/article/1702112)
+
