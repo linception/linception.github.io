@@ -112,5 +112,5 @@ GET _analyze
 
 ## 参考
 
-[^1]: [docker安装elasticsearch和kibana](https://www.cnblogs.com/adawoo/p/12455265.html)
+- [docker安装elasticsearch和kibana](https://www.cnblogs.com/adawoo/p/12455265.html)
 
