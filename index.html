@@ -74,7 +74,7 @@
     <article id="post-Docker 方式安装 Elasticsearch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/02/10/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/" class="article-date">
-  <time class="dt-published" datetime="2021-02-10T04:30:48.080Z" itemprop="datePublished">2021-02-10</time>
+  <time class="dt-published" datetime="2021-02-10T04:37:57.893Z" itemprop="datePublished">2021-02-10</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>版本兼容：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 es</span></span><br><span class="line">docker pull elasticsearch:7.6.2</span><br><span class="line">docker run -d --name es -p 9200:9200 -p 9300:9300 -e <span class="string">&quot;discovery.type=single-node&quot;</span> elasticsearch:7.6.2</span><br><span class="line"><span class="comment"># 访问 9200</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许跨域</span></span><br><span class="line">docker <span class="built_in">exec</span> -it es /bin/bash</span><br><span class="line"><span class="built_in">cd</span> config</span><br><span class="line">vi elasticsearch.yml</span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">&quot;*&quot;</span></span><br><span class="line">docker restart es</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 kibana </span></span><br><span class="line">docker pull kibana:7.6.2</span><br><span class="line">docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2</span><br><span class="line"><span class="comment"># 访问5601</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kibana 配置中文</span></span><br><span class="line">docker <span class="built_in">exec</span> -it kibana /bin/bash</span><br><span class="line"><span class="built_in">cd</span> config</span><br><span class="line">vi kibana.yml</span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">i18n.locale: <span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 es</span></span><br><span class="line">docker pull elasticsearch:7.6.2</span><br><span class="line">docker run -d --name es -p 9200:9200 -p 9300:9300 -e <span class="string">&quot;discovery.type=single-node&quot;</span> elasticsearch:7.6.2</span><br><span class="line"><span class="comment"># 访问 9200</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装 kibana </span></span><br><span class="line">docker pull kibana:7.6.2</span><br><span class="line">docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2</span><br><span class="line"><span class="comment"># 访问5601</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kibana 配置中文</span></span><br><span class="line">docker <span class="built_in">exec</span> -it kibana /bin/bash</span><br><span class="line"><span class="built_in">cd</span> config</span><br><span class="line">vi kibana.yml</span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">i18n.locale: <span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/adawoo/p/12455265.html">https://www.cnblogs.com/adawoo/p/12455265.html</a></p>
 <h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd es</span><br><span class="line">passwd es</span><br><span class="line">chown es:es -R elasticsearch-7.6.0/</span><br></pre></td></tr></table></figure>
 <p><em><code>config/elasticsearch.yml</code></em></p>
@@ -105,9 +105,7 @@
 <p><em><code>/etc/sysctl.conf</code></em></p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vm.max_map_count</span> = <span class="number">655360</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#/sbin/sysctl -p</span></span><br></pre></td></tr></table></figure>
 <p>访问 9200</p>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><h2 id="基本理论"><a href="#基本理论" class="headerlink" title="基本理论"></a>基本理论</h2><h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>跨域</li>
-</ul>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><h2 id="基本理论"><a href="#基本理论" class="headerlink" title="基本理论"></a>基本理论</h2><h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="允许跨域"><a href="#允许跨域" class="headerlink" title="允许跨域"></a>允许跨域</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许跨域</span></span><br><span class="line"><span class="string">docker</span> <span class="string">exec</span> <span class="string">-it</span> <span class="string">es</span> <span class="string">/bin/bash</span></span><br><span class="line"><span class="string">cd</span> <span class="string">config</span></span><br><span class="line"><span class="string">vi</span> <span class="string">elasticsearch.yml</span></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">&quot;*&quot;</span></span><br><span class="line"><span class="string">docker</span> <span class="string">restart</span> <span class="string">es</span></span><br></pre></td></tr></table></figure>
 <h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
 <li>head</li>
 </ul>
@@ -130,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/10/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/" data-id="ckkyxqs1i0000h5ng2ttigfjo" data-title="Docker 方式安装 Elasticsearch" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/10/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/" data-id="ckkyxzzh60000fwndegyvfslo" data-title="Docker 方式安装 Elasticsearch" class="article-share-link">Share</a>
       
       
       
@@ -145,7 +143,7 @@
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/02/10/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-02-10T04:30:48.080Z" itemprop="datePublished">2021-02-10</time>
+  <time class="dt-published" datetime="2021-02-10T04:37:57.893Z" itemprop="datePublished">2021-02-10</time>
 </a>
     
   </div>
@@ -177,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/10/hello-world/" data-id="ckkyxqs1n0001h5ngfrhwazws" data-title="Hello World，你好" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/10/hello-world/" data-id="ckkyxzzhc0001fwnd1hv5adtv" data-title="Hello World，你好" class="article-share-link">Share</a>
       
       
       
