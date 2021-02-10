@@ -86,10 +86,6 @@ vm.max_map_count = 655360
 
 ## 基本理论
 
-- index -> type -> document -> field
-
-- ~~-Des.insecure.allow.root=true~~
-
 ### 倒排索引
 
 ## 配置
