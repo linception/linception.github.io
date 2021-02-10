@@ -18,15 +18,6 @@ docker pull elasticsearch:7.6.2
 docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.6.2
 # 访问 9200
 
-# 允许跨域
-docker exec -it es /bin/bash
-cd config
-vi elasticsearch.yml
-# 配置
-http.cors.enabled: true
-http.cors.allow-origin: "*"
-docker restart es
-
 # 安装 kibana 
 docker pull kibana:7.6.2
 docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2
@@ -90,7 +81,18 @@ vm.max_map_count = 655360
 
 ## 配置
 
-- 跨域
+### 允许跨域
+
+```yaml
+# 允许跨域
+docker exec -it es /bin/bash
+cd config
+vi elasticsearch.yml
+# 配置
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+docker restart es
+```
 
 ## 插件
 
