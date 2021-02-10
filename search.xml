@@ -18,7 +18,10 @@
 <h3 id="添加字典"><a href="#添加字典" class="headerlink" title="添加字典"></a>添加字典</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#docker exec -it -e LANG=C.UTF-8 es /bin/bash</span></span><br><span class="line">docker <span class="built_in">exec</span> -it es /bin/bash</span><br><span class="line"><span class="comment"># elasticsearch-plugin 方式安装配置文件在</span></span><br><span class="line"><span class="built_in">cd</span> config/analysis-ik</span><br><span class="line"><span class="comment"># 手动解压配置文件在</span></span><br><span class="line"><span class="built_in">cd</span> plugins/ik/config</span><br><span class="line"><span class="comment"># 中文乱码不管，也可以添加成功</span></span><br><span class="line">vi my.dic</span><br><span class="line">vi IKAnalyzer.cfg.xml</span><br><span class="line"><span class="comment"># 添加</span></span><br><span class="line">&lt;entry key=<span class="string">&quot;ext_dict&quot;</span>&gt;my.dic&lt;/entry&gt;</span><br><span class="line">docker restart es</span><br></pre></td></tr></table></figure>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;analyzer&quot;</span>: <span class="string">&quot;ik_smart&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;黎小荣&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>分词方式：有 <code>ik_smart</code> 和 <code>ik_max_word</code> 两种</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>]]></content>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.cnblogs.com/adawoo/p/12455265.html">docker安装elasticsearch和kibana</a></li>
+</ul>
+]]></content>
       <categories>
         <category>Java</category>
       </categories>
