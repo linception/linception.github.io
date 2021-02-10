@@ -1,8 +1,7 @@
 ---
 title: Docker 方式安装 Elasticsearch
-description: Docker 方式安装 Elasticsearch
-tag: Elasticsearch
 category: Java
+tag: Elasticsearch
 ---
 
 
@@ -19,6 +18,8 @@ docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node
 ```
 
 访问：http://localhost:9200
+
+<!-- more -->
 
 ### 允许跨域
 
