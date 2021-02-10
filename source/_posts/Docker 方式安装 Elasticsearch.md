@@ -1,122 +1,68 @@
 ---
 title: Docker 方式安装 Elasticsearch
+description: Docker 方式安装 Elasticsearch
 tag: Elasticsearch
-category: Javar 333333333333333z
+category: Java
 ---
 
 
 
-# Elasticsearch
-
-## 安装
+# Docker 方式安装 Elasticsearch
 
 版本兼容：https://www.elastic.co/cn/support/matrix#matrix_compatibility
 
-<!--more-->
-
-### Docker
+## 安装 Elasticsearch
 
 ```bash
-# 安装 es
 docker pull elasticsearch:7.6.2
 docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.6.2
-# 访问 9200
-
-# 安装 kibana 
-docker pull kibana:7.6.2
-docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2
-# 访问5601
-
-# kibana 配置中文
-docker exec -it kibana /bin/bash
-cd config
-vi kibana.yml
-# 增加
-i18n.locale: "zh-CN"
-docker restart kibana
 ```
 
-参考：https://www.cnblogs.com/adawoo/p/12455265.html
-
-### Linux
-
-```bash
-useradd es
-passwd es
-chown es:es -R elasticsearch-7.6.0/
-```
-
-*`config/elasticsearch.yml`*
-
-```yml
-network.host: 0.0.0.0
-cluster.initial_master_nodes: ["node-1", "node-2"]
-```
-
-***ERROR: [4] bootstrap checks failed
-[1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65535]
-[2]: max number of threads [3155] for user [es] is too low, increase to at least [4096]
-[3]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]***
-
-*`/etc/security/limits.conf`*
-
-```ini
-* soft nofile 65536
-* hard nofile 65536
-* soft nproc 4096
-* hard nproc 4096
-```
-
-*`/etc/sysctl.conf`*
-
-```ini
-vm.max_map_count = 655360
-
-#/sbin/sysctl -p
-```
-
-访问 9200
-
-### Windows
-
-## 基本理论
-
-### 倒排索引
-
-## 配置
+访问：http://localhost:9200
 
 ### 允许跨域
 
 ```yaml
-# 允许跨域
 docker exec -it es /bin/bash
 cd config
 vi elasticsearch.yml
+
 # 配置
 http.cors.enabled: true
 http.cors.allow-origin: "*"
+
+# 重启
 docker restart es
 ```
 
-## 插件
+## 安装 Kibana
 
-- head
+```bash
+docker pull kibana:7.6.2
+docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2
+```
 
-## ELK
+访问：http://localhost:5601
 
-### Logstash
+### 配置中文
 
-### Kibana
+```bash
+docker exec -it kibana /bin/bash
+cd config
+vi kibana.yml
 
-- 中文
+# 增加
+i18n.locale: "zh-CN"
 
-## IK 分词器
+# 重启
+docker restart kibana
+```
+
+## 安装 IK 分词器
 
 github 地址：https://github.com/medcl/elasticsearch-analysis-ik
 
-### 安装
-
-安装方式一：
+### 方式一
 
 ```bash
 docker exec -it es /bin/bash
@@ -125,7 +71,7 @@ elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/
 docker restart es
 ```
 
-安装方式二：
+### 方式二
 
 ```bash
 cd plugins && mkdir ik && cd ik
@@ -161,7 +107,9 @@ GET _analyze
 }
 ```
 
-分词方式：
+分词方式：有 `ik_smart` 和 `ik_max_word` 两种
 
-- ik_smart
-- ik_max_word
+## 参考
+
+[^1]: [docker安装elasticsearch和kibana](https://www.cnblogs.com/adawoo/p/12455265.html)
+
