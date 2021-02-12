@@ -1,10 +1,9 @@
 ---
+date: 2021-02-11
 title: Hexo 使用
-category: 其他
+category: 计算机基础
 tag: Hexo
 ---
-
-<!-- more -->
 
 # Hexo 使用
 
@@ -161,6 +160,20 @@ local_search:
 tag: 标签
 category: 分类
 description: 描述 # 有描述则首页显示描述，否则显示全部，或者显示到 <!-- more -->
+```
+
+## 截取
+
+```bash
+npm install hexo-excerpt --save
+```
+
+```yaml
+excerpt:
+  depth: 10
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
 ```
 
 ## GitHub Actions 发布
