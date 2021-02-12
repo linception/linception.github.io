@@ -2,13 +2,19 @@
 <search>
   <entry>
     <title>Docker 方式安装 Elasticsearch</title>
-    <url>/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/</url>
-    <content><![CDATA[<h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
+    <url>/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
 <h2 id="安装-Elasticsearch"><a href="#安装-Elasticsearch" class="headerlink" title="安装 Elasticsearch"></a>安装 Elasticsearch</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull elasticsearch:7.6.2</span><br><span class="line">docker run -d --name es -p 9200:9200 -p 9300:9300 -e <span class="string">&quot;discovery.type=single-node&quot;</span> elasticsearch:7.6.2</span><br></pre></td></tr></table></figure>
 <p>访问：<a href="http://localhost:9200/">http://localhost:9200</a></p>
-<a id="more"></a>
-
 <h3 id="允许跨域"><a href="#允许跨域" class="headerlink" title="允许跨域"></a>允许跨域</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">docker</span> <span class="string">exec</span> <span class="string">-it</span> <span class="string">es</span> <span class="string">/bin/bash</span></span><br><span class="line"><span class="string">cd</span> <span class="string">config</span></span><br><span class="line"><span class="string">vi</span> <span class="string">elasticsearch.yml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">&quot;*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line"><span class="string">docker</span> <span class="string">restart</span> <span class="string">es</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装-Elasticsearch-Head"><a href="#安装-Elasticsearch-Head" class="headerlink" title="安装 Elasticsearch Head"></a>安装 Elasticsearch Head</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mobzelasticsearch-head:5</span><br><span class="line">docker run -d --name es-head -p 9100:9100 docker.io/mobz/elasticsearch-head:5</span><br></pre></td></tr></table></figure>
+<p>访问：<a href="http://localhost:9100/">http://localhost:9100</a></p>
+<blockquote>
+<p>需要允许 Elasticsearch 跨域</p>
+</blockquote>
+<h3 id="406-错误"><a href="#406-错误" class="headerlink" title="406 错误"></a>406 错误</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it es-head /bin/bash</span><br><span class="line"><span class="comment"># 没有vi，拷贝出来改</span></span><br><span class="line">docker cp es-head:/usr/src/app/_site/vendor.js /tmp/vendor.js</span><br><span class="line">vi /tmp/vendor.js</span><br><span class="line"><span class="comment"># x-www-form-urlencoded 替换为 json;charset=UTF-8</span></span><br><span class="line">:s/x-www-form-urlencoded/json;charset=UTF-8/g</span><br><span class="line"><span class="comment"># 拷贝回去</span></span><br><span class="line">docker cp /tmp/vendor.js es-head:/usr/src/app/_site/vendor.js</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker restart es-head</span><br></pre></td></tr></table></figure>
 <h2 id="安装-Kibana"><a href="#安装-Kibana" class="headerlink" title="安装 Kibana"></a>安装 Kibana</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull kibana:7.6.2</span><br><span class="line">docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2</span><br></pre></td></tr></table></figure>
 <p>访问：<a href="http://localhost:5601/">http://localhost:5601</a></p>
 <h3 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kibana /bin/bash</span><br><span class="line"><span class="built_in">cd</span> config</span><br><span class="line">vi kibana.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">i18n.locale: <span class="string">&quot;zh-CN&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
@@ -31,12 +37,12 @@
   </entry>
   <entry>
     <title>Hexo 使用</title>
-    <url>/2021/02/10/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="Hexo-使用"><a href="#Hexo-使用" class="headerlink" title="Hexo 使用"></a>Hexo 使用</h1><p>官方文档：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+    <url>/2021/02/12/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="Hexo-使用"><a href="#Hexo-使用" class="headerlink" title="Hexo 使用"></a>Hexo 使用</h1><p>官方文档：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init [folder]</span><br><span class="line"><span class="built_in">cd</span> [folder]</span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 生成文档</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>访问：<a href="http://localhost:4000/">http://localhost:4000</a></p>
-<a id="more"></a>
-
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化</span></span><br><span class="line">hexo init [folder]</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">hexo g|generate</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">hexo s|server</span><br><span class="line"><span class="comment"># 发布</span></span><br><span class="line">hexo d|deploy</span><br><span class="line"><span class="comment"># 清除</span></span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
 <h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><p>配置文件为 <code>_config.yml</code></p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 博客标题</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&quot;SharonLee&#x27;s Blog&quot;</span></span><br><span class="line"><span class="comment"># 副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> </span><br><span class="line"><span class="comment">#网站描述</span></span><br><span class="line"><span class="attr">description:</span> </span><br><span class="line"><span class="comment">#作者昵称</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">SharonLee</span></span><br><span class="line"><span class="comment"># 设置语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="comment"># 时区</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置主题</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
@@ -94,6 +100,48 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值在计算机中的表示</title>
+    <url>/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/</url>
+    <content><![CDATA[<h1 id="数值在计算机中的表示"><a href="#数值在计算机中的表示" class="headerlink" title="数值在计算机中的表示"></a>数值在计算机中的表示</h1><h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>参考：<a href="https://www.imooc.com/article/16813?block_id=tuijian_wz">https://www.imooc.com/article/16813?block_id=tuijian_wz</a></p>
+<p><strong>原码</strong>：最高位是符号位，0为正，1为负，其余为该二进制的绝对值</p>
+<p><strong>反码</strong>：原码符号位不变，其余按位取反</p>
+<p><strong>补码</strong>：两种计算方式</p>
+<ol>
+<li>反码+1</li>
+<li>右边第一个1及其右边的0不变，左边按位取反</li>
+</ol>
+<blockquote>
+<p>计算机中都是存的补码，上面只是补码的计算方式，不是定义</p>
+</blockquote>
+<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>补码的出现，就是为了把减法变成加法。怎么变呢，我们以钟表为例，一圈刻度是0到11。如果要从10点回拨到8点：</p>
+<ol>
+<li>一种方式是直接-2</li>
+<li>另一个方式是+10</li>
+</ol>
+<p>10怎么来的？10其实也是回拨2，只不过是在多一圈的基础上-2，即10=12-2，这里的10就类似于2的补码。</p>
+<p>计算机中的补码根本原因就是因为n位二进制溢出循环机制类似于钟表循环：</p>
+<ul>
+<li>减一个数m等于加上-m+2^(n+1)的正数</li>
+<li>反过来，加一个数m等于加一个m-2^(n+1)的负数</li>
+</ul>
+<p>根据下图，加左边的数就等于减去对应的补码</p>
+<p><img src="https://img-blog.csdnimg.cn/20200603204856332.png">*</p>
+<blockquote>
+<p>总结来说，补码就是2^(n+1)-m</p>
+<ul>
+<li>加上你的补码就是减去你</li>
+<li>虽然和你背靠背，那我绕地球一圈就是和你面对面</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>计算机基础</category>
+      </categories>
+      <tags>
+        <tag>计算机基础</tag>
       </tags>
   </entry>
 </search>

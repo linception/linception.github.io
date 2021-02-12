@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="学习、总结、记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SharonLee&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="数值在计算机中的表示原码、反码、补码参考：https:&#x2F;&#x2F;www.imooc.com&#x2F;article&#x2F;16813?block_id&#x3D;tuijian_wz 原码：最高位是符号位，0为正，1为负，其余为该二进制的绝对值 反码：原码符号位不变，其余按位取反 补码：两种计算方式  反码+1 右边第一个1及其右边的0不变，左边按位取反   计算机中都是存的补码，上面只是补码的计算方式，不是定义  补码补码的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值在计算机中的表示">
+<meta property="og:url" content="http://example.com/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/index.html">
 <meta property="og:site_name" content="SharonLee&#39;s Blog">
-<meta property="og:description" content="学习、总结、记录">
+<meta property="og:description" content="数值在计算机中的表示原码、反码、补码参考：https:&#x2F;&#x2F;www.imooc.com&#x2F;article&#x2F;16813?block_id&#x3D;tuijian_wz 原码：最高位是符号位，0为正，1为负，其余为该二进制的绝对值 反码：原码符号位不变，其余按位取反 补码：两种计算方式  反码+1 右边第一个1及其右边的0不变，左边按位取反   计算机中都是存的补码，上面只是补码的计算方式，不是定义  补码补码的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200603204856332.png">
+<meta property="article:published_time" content="2021-02-12T17:26:48.394Z">
+<meta property="article:modified_time" content="2021-02-12T17:26:48.394Z">
 <meta property="article:author" content="Sharon Lee">
+<meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200603204856332.png">
 
-<link rel="canonical" href="http://example.com/archives/">
+<link rel="canonical" href="http://example.com/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | SharonLee's Blog</title>
+  <title>数值在计算机中的表示 | SharonLee's Blog</title>
   
 
 
@@ -185,90 +190,118 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 3 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sharon Lee">
+      <meta itemprop="description" content="学习、总结、记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SharonLee's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数值在计算机中的表示
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-13 01:26:48" itemprop="dateCreated datePublished" datetime="2021-02-13T01:26:48+08:00">2021-02-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-13T01:26:48+08:00"
-              content="2021-02-13">
-          02-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/" itemprop="url">
-            <span itemprop="name">Docker 方式安装 Elasticsearch</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-13T01:26:48+08:00"
-              content="2021-02-13">
-          02-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/12/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
-            <span itemprop="name">Hexo 使用</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-13T01:26:48+08:00"
-              content="2021-02-13">
-          02-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/" itemprop="url">
-            <span itemprop="name">数值在计算机中的表示</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="数值在计算机中的表示"><a href="#数值在计算机中的表示" class="headerlink" title="数值在计算机中的表示"></a>数值在计算机中的表示</h1><h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.imooc.com/article/16813?block_id=tuijian_wz">https://www.imooc.com/article/16813?block_id=tuijian_wz</a></p>
+<p><strong>原码</strong>：最高位是符号位，0为正，1为负，其余为该二进制的绝对值</p>
+<p><strong>反码</strong>：原码符号位不变，其余按位取反</p>
+<p><strong>补码</strong>：两种计算方式</p>
+<ol>
+<li>反码+1</li>
+<li>右边第一个1及其右边的0不变，左边按位取反</li>
+</ol>
+<blockquote>
+<p>计算机中都是存的补码，上面只是补码的计算方式，不是定义</p>
+</blockquote>
+<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>补码的出现，就是为了把减法变成加法。怎么变呢，我们以钟表为例，一圈刻度是0到11。如果要从10点回拨到8点：</p>
+<ol>
+<li>一种方式是直接-2</li>
+<li>另一个方式是+10</li>
+</ol>
+<p>10怎么来的？10其实也是回拨2，只不过是在多一圈的基础上-2，即10=12-2，这里的10就类似于2的补码。</p>
+<p>计算机中的补码根本原因就是因为n位二进制溢出循环机制类似于钟表循环：</p>
+<ul>
+<li>减一个数m等于加上-m+2^(n+1)的正数</li>
+<li>反过来，加一个数m等于加一个m-2^(n+1)的负数</li>
+</ul>
+<p>根据下图，加左边的数就等于减去对应的补码</p>
+<p><img src="https://img-blog.csdnimg.cn/20200603204856332.png">*</p>
+<blockquote>
+<p>总结来说，补码就是2^(n+1)-m</p>
+<ul>
+<li>加上你的补码就是减去你</li>
+<li>虽然和你背靠背，那我绕地球一圈就是和你面对面</li>
+</ul>
+</blockquote>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/12/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="Hexo 使用">
+      Hexo 使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -321,6 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">数值在计算机中的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">原码、反码、补码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">补码</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

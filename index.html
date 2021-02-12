@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/" class="post-title-link" itemprop="url">Docker 方式安装 Elasticsearch</a>
+            <a href="/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/" class="post-title-link" itemprop="url">Docker 方式安装 Elasticsearch</a>
         </h2>
 
         <div class="post-meta">
@@ -215,7 +215,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-02-10 21:25:11" itemprop="dateCreated datePublished" datetime="2021-02-10T21:25:11+08:00">2021-02-10</time>
+              <time title="创建时间：2021-02-13 01:26:48" itemprop="dateCreated datePublished" datetime="2021-02-13T01:26:48+08:00">2021-02-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,17 +238,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
+          <a id="more"></a>
+
+<h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
 <h2 id="安装-Elasticsearch"><a href="#安装-Elasticsearch" class="headerlink" title="安装 Elasticsearch"></a>安装 Elasticsearch</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull elasticsearch:7.6.2</span><br><span class="line">docker run -d --name es -p 9200:9200 -p 9300:9300 -e <span class="string">&quot;discovery.type=single-node&quot;</span> elasticsearch:7.6.2</span><br></pre></td></tr></table></figure>
 <p>访问：<a target="_blank" rel="noopener" href="http://localhost:9200/">http://localhost:9200</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h3 id="允许跨域"><a href="#允许跨域" class="headerlink" title="允许跨域"></a>允许跨域</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">docker</span> <span class="string">exec</span> <span class="string">-it</span> <span class="string">es</span> <span class="string">/bin/bash</span></span><br><span class="line"><span class="string">cd</span> <span class="string">config</span></span><br><span class="line"><span class="string">vi</span> <span class="string">elasticsearch.yml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">&quot;*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line"><span class="string">docker</span> <span class="string">restart</span> <span class="string">es</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装-Elasticsearch-Head"><a href="#安装-Elasticsearch-Head" class="headerlink" title="安装 Elasticsearch Head"></a>安装 Elasticsearch Head</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull mobzelasticsearch-head:5</span><br><span class="line">docker run -d --name es-head -p 9100:9100 docker.io/mobz/elasticsearch-head:5</span><br></pre></td></tr></table></figure>
+<p>访问：<a target="_blank" rel="noopener" href="http://localhost:9100/">http://localhost:9100</a></p>
+<blockquote>
+<p>需要允许 Elasticsearch 跨域</p>
+</blockquote>
+<h3 id="406-错误"><a href="#406-错误" class="headerlink" title="406 错误"></a>406 错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it es-head /bin/bash</span><br><span class="line"><span class="comment"># 没有vi，拷贝出来改</span></span><br><span class="line">docker cp es-head:/usr/src/app/_site/vendor.js /tmp/vendor.js</span><br><span class="line">vi /tmp/vendor.js</span><br><span class="line"><span class="comment"># x-www-form-urlencoded 替换为 json;charset=UTF-8</span></span><br><span class="line">:s/x-www-form-urlencoded/json;charset=UTF-8/g</span><br><span class="line"><span class="comment"># 拷贝回去</span></span><br><span class="line">docker cp /tmp/vendor.js es-head:/usr/src/app/_site/vendor.js</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker restart es-head</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Kibana"><a href="#安装-Kibana" class="headerlink" title="安装 Kibana"></a>安装 Kibana</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull kibana:7.6.2</span><br><span class="line">docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2</span><br></pre></td></tr></table></figure>
+<p>访问：<a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601</a></p>
+<h3 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kibana /bin/bash</span><br><span class="line"><span class="built_in">cd</span> config</span><br><span class="line">vi kibana.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">i18n.locale: <span class="string">&quot;zh-CN&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
+<h2 id="安装-IK-分词器"><a href="#安装-IK-分词器" class="headerlink" title="安装 IK 分词器"></a>安装 IK 分词器</h2><p>github 地址：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik">https://github.com/medcl/elasticsearch-analysis-ik</a></p>
+<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it es /bin/bash</span><br><span class="line"><span class="built_in">cd</span> plugins</span><br><span class="line">elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip</span><br><span class="line">docker restart es</span><br></pre></td></tr></table></figure>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> plugins &amp;&amp; mkdir ik &amp;&amp; <span class="built_in">cd</span> ik</span><br><span class="line">curl -LJO https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip</span><br><span class="line"><span class="comment"># 加速 curl -LJO https://hub.fastgit.org/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip</span></span><br><span class="line">unzip elasticsearch-analysis-ik-7.6.2.zip</span><br></pre></td></tr></table></figure>
+<h3 id="添加字典"><a href="#添加字典" class="headerlink" title="添加字典"></a>添加字典</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#docker exec -it -e LANG=C.UTF-8 es /bin/bash</span></span><br><span class="line">docker <span class="built_in">exec</span> -it es /bin/bash</span><br><span class="line"><span class="comment"># elasticsearch-plugin 方式安装配置文件在</span></span><br><span class="line"><span class="built_in">cd</span> config/analysis-ik</span><br><span class="line"><span class="comment"># 手动解压配置文件在</span></span><br><span class="line"><span class="built_in">cd</span> plugins/ik/config</span><br><span class="line"><span class="comment"># 中文乱码不管，也可以添加成功</span></span><br><span class="line">vi my.dic</span><br><span class="line">vi IKAnalyzer.cfg.xml</span><br><span class="line"><span class="comment"># 添加</span></span><br><span class="line">&lt;entry key=<span class="string">&quot;ext_dict&quot;</span>&gt;my.dic&lt;/entry&gt;</span><br><span class="line">docker restart es</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;analyzer&quot;</span>: <span class="string">&quot;ik_smart&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;黎小荣&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分词方式：有 <code>ik_smart</code> 和 <code>ik_max_word</code> 两种</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/adawoo/p/12455265.html">docker安装elasticsearch和kibana</a></li>
+</ul>
+
       
     </div>
 
@@ -267,7 +281,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/10/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -281,7 +295,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/02/10/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Hexo 使用</a>
+            <a href="/2021/02/12/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Hexo 使用</a>
         </h2>
 
         <div class="post-meta">
@@ -291,7 +305,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-02-10 21:25:11" itemprop="dateCreated datePublished" datetime="2021-02-10T21:25:11+08:00">2021-02-10</time>
+              <time title="创建时间：2021-02-13 01:26:48" itemprop="dateCreated datePublished" datetime="2021-02-13T01:26:48+08:00">2021-02-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -314,17 +328,160 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Hexo-使用"><a href="#Hexo-使用" class="headerlink" title="Hexo 使用"></a>Hexo 使用</h1><p>官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+          <a id="more"></a>
+
+<h1 id="Hexo-使用"><a href="#Hexo-使用" class="headerlink" title="Hexo 使用"></a>Hexo 使用</h1><p>官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init [folder]</span><br><span class="line"><span class="built_in">cd</span> [folder]</span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 生成文档</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>访问：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/10/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化</span></span><br><span class="line">hexo init [folder]</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">hexo g|generate</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">hexo s|server</span><br><span class="line"><span class="comment"># 发布</span></span><br><span class="line">hexo d|deploy</span><br><span class="line"><span class="comment"># 清除</span></span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><p>配置文件为 <code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 博客标题</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&quot;SharonLee&#x27;s Blog&quot;</span></span><br><span class="line"><span class="comment"># 副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> </span><br><span class="line"><span class="comment">#网站描述</span></span><br><span class="line"><span class="attr">description:</span> </span><br><span class="line"><span class="comment">#作者昵称</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">SharonLee</span></span><br><span class="line"><span class="comment"># 设置语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="comment"># 时区</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置主题</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<h2 id="发布到-Git"><a href="#发布到-Git" class="headerlink" title="发布到 Git"></a>发布到 Git</h2><p>安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&lt;repository</span> <span class="string">url&gt;</span></span><br><span class="line">  <span class="attr">branch:</span> [<span class="string">branch</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="NexT-主题"><a href="#NexT-主题" class="headerlink" title="NexT 主题"></a>NexT 主题</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>github 地址：<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next <span class="comment"># 删除 .git 文件夹</span></span><br><span class="line"><span class="comment"># 或者下载解压到相应目录</span></span><br></pre></td></tr></table></figure>
+<p><code>_config.yml</code> 中配置主题</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><p><code>next/_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字体小一点</span></span><br><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">  	<span class="attr">size:</span> <span class="number">0.8</span></span><br><span class="line">  	</span><br><span class="line"><span class="comment"># 样式</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Gemini</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 展开所有目录</span></span><br><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">expand_all:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="开启分类、标签和关于"><a href="#开启分类、标签和关于" class="headerlink" title="开启分类、标签和关于"></a>开启分类、标签和关于</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+<p><code>source/xxx/index.md</code> 中分别添加</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">categories</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">about</span></span><br></pre></td></tr></table></figure>
+<p>配置 <code>next/_config.yml</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">th</span></span><br></pre></td></tr></table></figure>
+<h3 id="开启搜索"><a href="#开启搜索" class="headerlink" title="开启搜索"></a>开启搜索</h3><p>安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>配置 <code>next/_config.yml</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="文章头"><a href="#文章头" class="headerlink" title="文章头"></a>文章头</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tag:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">category:</span> <span class="string">分类</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">描述</span> <span class="comment"># 有描述则首页显示描述，否则显示全部，或者显示到 &lt;!-- more --&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="GitHub-Actions-发布"><a href="#GitHub-Actions-发布" class="headerlink" title="GitHub Actions 发布"></a>GitHub Actions 发布</h2><p><code>.github/workflows/main.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发条件：在 push 到 master 分支后</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 任务</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="comment"># 服务器环境：最新版 Ubuntu</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="comment"># 拉取代码</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2.3.1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">persist-credentials:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 1、生成静态文件</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">&amp;&amp;</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 2、部署到 GitHub Pages</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">JamesIves/github-pages-deploy-action@4.0.0</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br><span class="line">          <span class="attr">folder:</span> <span class="string">public</span></span><br><span class="line">          <span class="comment">#注意这里的 public 是仓库根目录下的 public，也就是 npm run build 生成静态资源的路径，比如有的人是 `docs/.vuepress/dist`</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 3、同步到 gitee 的仓库</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Sync</span> <span class="string">to</span> <span class="string">Gitee</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">wearerequired/git-mirror-action@v1</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="comment"># 注意在 Settings-&gt;Secrets 配置 GITEE_RSA_PRIVATE_KEY</span></span><br><span class="line">          <span class="attr">SSH_PRIVATE_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITEE_RSA_PRIVATE_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 GitHub 源仓库地址</span></span><br><span class="line">          <span class="attr">source-repo:</span> <span class="string">git@github.com:linception/linception.github.io.git</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 Gitee 目标仓库地址</span></span><br><span class="line">          <span class="attr">destination-repo:</span> <span class="string">git@gitee.com:sharonlee/sharonlee.git</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 4、部署到 Gitee Pages</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">Gitee</span> <span class="string">Pages</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">yanglbme/gitee-pages-action@main</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 Gitee 用户名</span></span><br><span class="line">          <span class="attr">gitee-username:</span> <span class="string">sharonlee</span></span><br><span class="line">          <span class="comment"># 注意在 Settings-&gt;Secrets 配置 GITEE_PASSWORD</span></span><br><span class="line">          <span class="attr">gitee-password:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITEE_PASSWORD</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错</span></span><br><span class="line">          <span class="attr">gitee-repo:</span> <span class="string">sharonlee/sharonlee</span></span><br><span class="line">          <span class="comment"># 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）</span></span><br><span class="line">          <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>图片全放在 <code>source/images</code> 下，以绝对路径方式引用 <code>/images/xxx.png</code>，同时 typora <code>格式-&gt;图像-&gt;设置图片根目录</code> 设置为 <code>source</code> 目录</p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>设置 <code>post_asset_folder: true</code>，图片存放在 <code>filename</code> 文件夹下，这样图片会被拷贝到文件同级目录</p>
+<p>再安装下面插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br><span class="line">npm install hexo-simple-image --save</span><br><span class="line">npm install hexo-typora-image --save</span><br><span class="line">npm install hexo-image-link --save</span><br></pre></td></tr></table></figure>
+<p>最简单是用预装的 <code>hexo-renderer-marked</code> 插件，直接配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img image_name.jpg This is an image %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不爽的地方：</p>
+<ol>
+<li>必须建立一个与文件名同名的文件夹存放资源，<code>post_asset_folder</code> 设置才会拷贝</li>
+<li>文件名不能有空格，不过 title 可以有，并且可以不和文件名一致</li>
+</ol>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">官方文档</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html">资源文件夹</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mqdxiaoxiao/article/details/93644533">Hexo博客NexT主题下添加分类、标签、关于菜单项</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://jishuin.proginn.com/p/763bfbd38928">GitHub Actions入门教程：自动化部署静态博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1702112">hexo 图片显示问题及使用typora设置图片路径</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sharon Lee">
+      <meta itemprop="description" content="学习、总结、记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SharonLee's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/12/%E5%85%B6%E4%BB%96/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/" class="post-title-link" itemprop="url">数值在计算机中的表示</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-13 01:26:48" itemprop="dateCreated datePublished" datetime="2021-02-13T01:26:48+08:00">2021-02-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数值在计算机中的表示"><a href="#数值在计算机中的表示" class="headerlink" title="数值在计算机中的表示"></a>数值在计算机中的表示</h1><h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.imooc.com/article/16813?block_id=tuijian_wz">https://www.imooc.com/article/16813?block_id=tuijian_wz</a></p>
+<p><strong>原码</strong>：最高位是符号位，0为正，1为负，其余为该二进制的绝对值</p>
+<p><strong>反码</strong>：原码符号位不变，其余按位取反</p>
+<p><strong>补码</strong>：两种计算方式</p>
+<ol>
+<li>反码+1</li>
+<li>右边第一个1及其右边的0不变，左边按位取反</li>
+</ol>
+<blockquote>
+<p>计算机中都是存的补码，上面只是补码的计算方式，不是定义</p>
+</blockquote>
+<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>补码的出现，就是为了把减法变成加法。怎么变呢，我们以钟表为例，一圈刻度是0到11。如果要从10点回拨到8点：</p>
+<ol>
+<li>一种方式是直接-2</li>
+<li>另一个方式是+10</li>
+</ol>
+<p>10怎么来的？10其实也是回拨2，只不过是在多一圈的基础上-2，即10=12-2，这里的10就类似于2的补码。</p>
+<p>计算机中的补码根本原因就是因为n位二进制溢出循环机制类似于钟表循环：</p>
+<ul>
+<li>减一个数m等于加上-m+2^(n+1)的正数</li>
+<li>反过来，加一个数m等于加一个m-2^(n+1)的负数</li>
+</ul>
+<p>根据下图，加左边的数就等于减去对应的补码</p>
+<p><img src="https://img-blog.csdnimg.cn/20200603204856332.png">*</p>
+<blockquote>
+<p>总结来说，补码就是2^(n+1)-m</p>
+<ul>
+<li>加上你的补码就是减去你</li>
+<li>虽然和你背靠背，那我绕地球一圈就是和你面对面</li>
+</ul>
+</blockquote>
+
       
     </div>
 
@@ -405,20 +562,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

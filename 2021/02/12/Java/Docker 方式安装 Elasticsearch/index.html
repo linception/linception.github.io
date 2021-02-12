@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Docker 方式安装 Elasticsearch版本兼容：https:&#x2F;&#x2F;www.elastic.co&#x2F;cn&#x2F;support&#x2F;matrix#matrix_compatibility 安装 Elasticsearch12docker pull elasticsearch:7.6.2docker run -d --name es -p 9200:9200 -p 9300:9300 -e &quot;">
+  <meta name="description" content="Docker 方式安装 Elasticsearch版本兼容：https:&#x2F;&#x2F;www.elastic.co&#x2F;cn&#x2F;support&#x2F;matrix#matrix_compatibility 安装 Elasticsearch12docker pull elasticsearch:7.6.2docker run -d --name es -p 9200:9200 -p 9300:9300 -e &amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 方式安装 Elasticsearch">
-<meta property="og:url" content="http://example.com/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/index.html">
+<meta property="og:url" content="http://example.com/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/index.html">
 <meta property="og:site_name" content="SharonLee&#39;s Blog">
-<meta property="og:description" content="Docker 方式安装 Elasticsearch版本兼容：https:&#x2F;&#x2F;www.elastic.co&#x2F;cn&#x2F;support&#x2F;matrix#matrix_compatibility 安装 Elasticsearch12docker pull elasticsearch:7.6.2docker run -d --name es -p 9200:9200 -p 9300:9300 -e &quot;">
+<meta property="og:description" content="Docker 方式安装 Elasticsearch版本兼容：https:&#x2F;&#x2F;www.elastic.co&#x2F;cn&#x2F;support&#x2F;matrix#matrix_compatibility 安装 Elasticsearch12docker pull elasticsearch:7.6.2docker run -d --name es -p 9200:9200 -p 9300:9300 -e &amp;quo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-10T13:25:11.177Z">
-<meta property="article:modified_time" content="2021-02-10T13:25:11.177Z">
+<meta property="article:published_time" content="2021-02-12T17:26:48.394Z">
+<meta property="article:modified_time" content="2021-02-12T17:26:48.394Z">
 <meta property="article:author" content="Sharon Lee">
 <meta property="article:tag" content="Elasticsearch">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/">
+<link rel="canonical" href="http://example.com/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/">
 
 
 <script id="page-configurations">
@@ -195,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/10/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/Java/Docker%20%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%20Elasticsearch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -218,7 +218,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-02-10 21:25:11" itemprop="dateCreated datePublished" datetime="2021-02-10T21:25:11+08:00">2021-02-10</time>
+              <time title="创建时间：2021-02-13 01:26:48" itemprop="dateCreated datePublished" datetime="2021-02-13T01:26:48+08:00">2021-02-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,12 +241,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
+        <a id="more"></a>
+
+<h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
 <h2 id="安装-Elasticsearch"><a href="#安装-Elasticsearch" class="headerlink" title="安装 Elasticsearch"></a>安装 Elasticsearch</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull elasticsearch:7.6.2</span><br><span class="line">docker run -d --name es -p 9200:9200 -p 9300:9300 -e <span class="string">&quot;discovery.type=single-node&quot;</span> elasticsearch:7.6.2</span><br></pre></td></tr></table></figure>
 <p>访问：<a target="_blank" rel="noopener" href="http://localhost:9200/">http://localhost:9200</a></p>
-<a id="more"></a>
-
 <h3 id="允许跨域"><a href="#允许跨域" class="headerlink" title="允许跨域"></a>允许跨域</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">docker</span> <span class="string">exec</span> <span class="string">-it</span> <span class="string">es</span> <span class="string">/bin/bash</span></span><br><span class="line"><span class="string">cd</span> <span class="string">config</span></span><br><span class="line"><span class="string">vi</span> <span class="string">elasticsearch.yml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">&quot;*&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line"><span class="string">docker</span> <span class="string">restart</span> <span class="string">es</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装-Elasticsearch-Head"><a href="#安装-Elasticsearch-Head" class="headerlink" title="安装 Elasticsearch Head"></a>安装 Elasticsearch Head</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull mobzelasticsearch-head:5</span><br><span class="line">docker run -d --name es-head -p 9100:9100 docker.io/mobz/elasticsearch-head:5</span><br></pre></td></tr></table></figure>
+<p>访问：<a target="_blank" rel="noopener" href="http://localhost:9100/">http://localhost:9100</a></p>
+<blockquote>
+<p>需要允许 Elasticsearch 跨域</p>
+</blockquote>
+<h3 id="406-错误"><a href="#406-错误" class="headerlink" title="406 错误"></a>406 错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it es-head /bin/bash</span><br><span class="line"><span class="comment"># 没有vi，拷贝出来改</span></span><br><span class="line">docker cp es-head:/usr/src/app/_site/vendor.js /tmp/vendor.js</span><br><span class="line">vi /tmp/vendor.js</span><br><span class="line"><span class="comment"># x-www-form-urlencoded 替换为 json;charset=UTF-8</span></span><br><span class="line">:s/x-www-form-urlencoded/json;charset=UTF-8/g</span><br><span class="line"><span class="comment"># 拷贝回去</span></span><br><span class="line">docker cp /tmp/vendor.js es-head:/usr/src/app/_site/vendor.js</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker restart es-head</span><br></pre></td></tr></table></figure>
 <h2 id="安装-Kibana"><a href="#安装-Kibana" class="headerlink" title="安装 Kibana"></a>安装 Kibana</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull kibana:7.6.2</span><br><span class="line">docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2</span><br></pre></td></tr></table></figure>
 <p>访问：<a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601</a></p>
 <h3 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kibana /bin/bash</span><br><span class="line"><span class="built_in">cd</span> config</span><br><span class="line">vi kibana.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">i18n.locale: <span class="string">&quot;zh-CN&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
@@ -277,7 +283,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/02/10/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="Hexo 使用">
+    <a href="/2021/02/12/%E5%85%B6%E4%BB%96/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="Hexo 使用">
       <i class="fa fa-chevron-left"></i> Hexo 使用
     </a></div>
       <div class="post-nav-item"></div>
@@ -339,7 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85-Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">Docker 方式安装 Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Elasticsearch"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">允许跨域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Kibana"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Kibana</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置中文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-IK-%E5%88%86%E8%AF%8D%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">安装 IK 分词器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="nav-number">1.3.1.</span> <span class="nav-text">方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="nav-number">1.3.2.</span> <span class="nav-text">方式二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AD%97%E5%85%B8"><span class="nav-number">1.3.3.</span> <span class="nav-text">添加字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.4.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85-Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">Docker 方式安装 Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Elasticsearch"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">允许跨域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Elasticsearch-Head"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Elasticsearch Head</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#406-%E9%94%99%E8%AF%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">406 错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Kibana"><span class="nav-number">1.3.</span> <span class="nav-text">安装 Kibana</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置中文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-IK-%E5%88%86%E8%AF%8D%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">安装 IK 分词器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="nav-number">1.4.1.</span> <span class="nav-text">方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="nav-number">1.4.2.</span> <span class="nav-text">方式二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AD%97%E5%85%B8"><span class="nav-number">1.4.3.</span> <span class="nav-text">添加字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.4.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -353,20 +359,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
