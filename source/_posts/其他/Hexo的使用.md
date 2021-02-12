@@ -2,8 +2,9 @@
 title: Hexo 使用
 category: 其他
 tag: Hexo
-
 ---
+
+<!-- more -->
 
 # Hexo 使用
 
@@ -23,8 +24,6 @@ hexo s
 ```
 
 访问：http://localhost:4000
-
-<!-- more -->
 
 ## 常用命令
 

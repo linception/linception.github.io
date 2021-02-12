@@ -4,7 +4,7 @@ category: Java
 tag: Elasticsearch
 ---
 
-
+<!-- more -->
 
 # Docker 方式安装 Elasticsearch
 
@@ -19,8 +19,6 @@ docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node
 
 访问：http://localhost:9200
 
-<!-- more -->
-
 ### 允许跨域
 
 ```yaml
@@ -34,6 +32,32 @@ http.cors.allow-origin: "*"
 
 # 重启
 docker restart es
+```
+
+## 安装 Elasticsearch Head
+
+```bash
+docker pull mobzelasticsearch-head:5
+docker run -d --name es-head -p 9100:9100 docker.io/mobz/elasticsearch-head:5
+```
+
+访问：http://localhost:9100
+
+> 需要允许 Elasticsearch 跨域
+
+### 406 错误
+
+```bash
+docker exec -it es-head /bin/bash
+# 没有vi，拷贝出来改
+docker cp es-head:/usr/src/app/_site/vendor.js /tmp/vendor.js
+vi /tmp/vendor.js
+# x-www-form-urlencoded 替换为 json;charset=UTF-8
+:s/x-www-form-urlencoded/json;charset=UTF-8/g
+# 拷贝回去
+docker cp /tmp/vendor.js es-head:/usr/src/app/_site/vendor.js
+# 重启
+docker restart es-head
 ```
 
 ## 安装 Kibana
