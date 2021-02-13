@@ -94,7 +94,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>计算机基础</category>
+        <category>技术</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
@@ -103,8 +103,7 @@
   <entry>
     <title>数值在计算机中的表示</title>
     <url>/2021/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/</url>
-    <content><![CDATA[<h1 id="数值在计算机中的表示"><a href="#数值在计算机中的表示" class="headerlink" title="数值在计算机中的表示"></a>数值在计算机中的表示</h1><h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>参考：<a href="https://www.imooc.com/article/16813?block_id=tuijian_wz">https://www.imooc.com/article/16813?block_id=tuijian_wz</a></p>
-<p><strong>原码</strong>：最高位是符号位，0为正，1为负，其余为该二进制的绝对值</p>
+    <content><![CDATA[<h1 id="数值在计算机中的表示"><a href="#数值在计算机中的表示" class="headerlink" title="数值在计算机中的表示"></a>数值在计算机中的表示</h1><h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p><strong>原码</strong>：最高位是符号位，0为正，1为负，其余为该二进制的绝对值</p>
 <p><strong>反码</strong>：原码符号位不变，其余按位取反</p>
 <p><strong>补码</strong>：两种计算方式</p>
 <ol>
@@ -134,7 +133,63 @@
 <li>虽然和你背靠背，那我绕地球一圈就是和你面对面</li>
 </ul>
 </blockquote>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2>]]></content>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://www.imooc.com/article/16813?block_id=tuijian_wz">原码，反码，补码杂谈</a></li>
+</ul>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE[^1  ] 标准浮点数表示<br>$$<br>V=(-1)^s<em>M</em>2^E<br>$$</p>
+<ul>
+<li>S：符号（Sign），0 正，1 负</li>
+<li>E：阶码（Exponent），2 的 E 次幂，可能是负数</li>
+<li>M：尾数（Mantissa），二进制小数，[1,2) 或 [0,1)</li>
+</ul>
+<p>[^1]: 电气与电子工程师协会（Institute of Electrical and Electronics Engineers），简称 IEEE</p>
+<p>单精度浮点数：</p>
+<p><img src="https://gitee.com/sharonlee/images/raw/master/20210214002202.png"></p>
+<p>双精度浮点数：</p>
+<p><img src="https://gitee.com/sharonlee/images/raw/master/20210214002210.png"></p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>根据阶码和尾数的不同，可以分为几类：</p>
+<p><img src="https://gitee.com/sharonlee/images/raw/master/image-20210214002715305.png" alt="image-20210214002715305"></p>
+<ul>
+<li>规格化的值：e 不全为0和1，E=e-Bias，M=m+1</li>
+</ul>
+<blockquote>
+<p>k 位阶码，偏置（Bias）为 2^(k-1)-1</p>
+<ul>
+<li>单精度 k 为8，偏置为127</li>
+<li>双精度 k 为 11，偏置为1023</li>
+</ul>
+</blockquote>
+<ul>
+<li>非规格化的值：e 全为0，E=1-Bias，M=m</li>
+</ul>
+<blockquote>
+<p>==为什么非规格化 E=1-Bias，而不是 -Bias==：因为和规则化的值平滑衔接</p>
+<p>==为什么需要非规则化的值==：</p>
+<ul>
+<li>因为规格化整数位始终是1，即 M&gt;=1，不能表示0。阶码和尾数全为0，分正负</li>
+<li>表示非常接近0的数</li>
+</ul>
+</blockquote>
+<ul>
+<li>无穷：e 全为1，m 全为0，分正负</li>
+<li>NaN：e 全为1，m 不为0，是一系列值</li>
+</ul>
+<h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><p><a href="https://blog.csdn.net/tercel_zhang/article/details/52537726">程序员必知之浮点数运算原理详解</a></p>
+</li>
+<li><p><a href="http://c.biancheng.net/view/314.html">IEEE 754浮点数标准详解</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/107106675">IEEE浮点表示</a></p>
+</li>
+<li><p>《深入理解计算机系统（第3版）》</p>
+</li>
+<li><p>《计算机科学导论（第3版）》</p>
+</li>
+<li><p><a href="http://www.binaryconvert.com/result_float.html">浮点在线数转二进制</a></p>
+</li>
+</ul>
+<p>[^1  ]: </p>
+]]></content>
       <categories>
         <category>计算机基础</category>
       </categories>
