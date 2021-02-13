@@ -136,13 +136,12 @@
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="https://www.imooc.com/article/16813?block_id=tuijian_wz">原码，反码，补码杂谈</a></li>
 </ul>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE[^1  ] 标准浮点数表示<br>$$<br>V=(-1)^s<em>M</em>2^E<br>$$</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>IEEE（Institute of Electrical and Electronics Engineers，电气与电子工程师协会）标准浮点数表示：<code>V=(-1)^s * M * 2^E</code></p>
 <ul>
 <li>S：符号（Sign），0 正，1 负</li>
 <li>E：阶码（Exponent），2 的 E 次幂，可能是负数</li>
 <li>M：尾数（Mantissa），二进制小数，[1,2) 或 [0,1)</li>
 </ul>
-<p>[^1]: 电气与电子工程师协会（Institute of Electrical and Electronics Engineers），简称 IEEE</p>
 <p>单精度浮点数：</p>
 <p><img src="https://gitee.com/sharonlee/images/raw/master/20210214002202.png"></p>
 <p>双精度浮点数：</p>
@@ -150,8 +149,7 @@
 <h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>根据阶码和尾数的不同，可以分为几类：</p>
 <p><img src="https://gitee.com/sharonlee/images/raw/master/image-20210214002715305.png" alt="image-20210214002715305"></p>
 <ul>
-<li>规格化的值：e 不全为0和1，E=e-Bias，M=m+1</li>
-</ul>
+<li><p>规格化的值：e 不全为0和1，E=e-Bias，M=m+1</p>
 <blockquote>
 <p>k 位阶码，偏置（Bias）为 2^(k-1)-1</p>
 <ul>
@@ -159,20 +157,21 @@
 <li>双精度 k 为 11，偏置为1023</li>
 </ul>
 </blockquote>
-<ul>
-<li>非规格化的值：e 全为0，E=1-Bias，M=m</li>
-</ul>
+</li>
+<li><p>非规格化的值：e 全为0，E=1-Bias，M=m</p>
 <blockquote>
-<p>==为什么非规格化 E=1-Bias，而不是 -Bias==：因为和规则化的值平滑衔接</p>
-<p>==为什么需要非规则化的值==：</p>
+<p><strong>为什么非规格化 E=1-Bias，而不是 -Bias</strong>：因为和规则化的值平滑衔接</p>
+<p><strong>为什么需要非规则化的值</strong>：</p>
 <ul>
 <li>因为规格化整数位始终是1，即 M&gt;=1，不能表示0。阶码和尾数全为0，分正负</li>
 <li>表示非常接近0的数</li>
 </ul>
 </blockquote>
-<ul>
-<li>无穷：e 全为1，m 全为0，分正负</li>
-<li>NaN：e 全为1，m 不为0，是一系列值</li>
+</li>
+<li><p>无穷：e 全为1，m 全为0，分正负</p>
+</li>
+<li><p>NaN：e 全为1，m 不为0，是一系列值</p>
+</li>
 </ul>
 <h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><p><a href="https://blog.csdn.net/tercel_zhang/article/details/52537726">程序员必知之浮点数运算原理详解</a></p>
@@ -188,7 +187,6 @@
 <li><p><a href="http://www.binaryconvert.com/result_float.html">浮点在线数转二进制</a></p>
 </li>
 </ul>
-<p>[^1  ]: </p>
 ]]></content>
       <categories>
         <category>计算机基础</category>
