@@ -1,7 +1,7 @@
 ---
 date: 2021-02-11
 title: Hexo 使用
-category: 计算机基础
+category: 技术
 tag: Hexo
 ---
 
