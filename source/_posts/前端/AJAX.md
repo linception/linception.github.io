@@ -1,3 +1,12 @@
+---
+title: AJAX
+date: 2021-02-17
+category: 前端
+tag: AJAX
+---
+
+
+
 # AJAX
 
 AJAX 是异步的 JavaScript 和 XML（**A**synchronous **J**avaScript **A**nd **X**ML）。简单点说，就是使用 `XMLHttpRequest` 对象与服务器通信。
@@ -12,8 +21,6 @@ if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 }
 ```
-
-
 
 ## 参考
 

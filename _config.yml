@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: "SharonLee's Blog"
+title: "吹走的风的博客"
 subtitle: '吹走的风的博客'
 description: '学习、总结、记录'
 keywords:
-author: Sharon Lee
+author: 吹走的风
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
@@ -101,7 +101,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: fluid
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
