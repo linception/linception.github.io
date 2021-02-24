@@ -1,9 +1,10 @@
 ---
 title: JavaScript 知识点
 date: 2021-02-20
-category: JavaScript
+category:
+  - 前端
+  - JavaScript
 tag: JavaScript
-typora-root-url: ..\..
 ---
 
 # JavaScript 知识点
@@ -19,7 +20,7 @@ typora-root-url: ..\..
 - `defer` 保证顺序，`async` 无序
 - `defer` 保证在 `DOMContentLoaded` 事件前加载完毕
 
-![img](/images/20210220233046.png)
+![20210220233046](JavaScript 知识点/20210220233046.png)
 
 参考：
 
@@ -78,13 +79,13 @@ for (let i = 0; i < 5; ++i) {
 
 **转换规则：**
 
-![image-20210221012000316](/images/image-20210221012000316.png)
+![image-20210221012000316](JavaScript 知识点/image-20210221012000316.png)
 
 ## Number 的转换规则
 
 **转换规则：**
 
-![image-20210221013656546](/images/image-20210221013656546.png)
+![image-20210221013656546](JavaScript 知识点/image-20210221013656546.png)
 
 ## 标签函数
 
@@ -130,7 +131,7 @@ function noTag(strings, ...expressions) {
 
 ### 原型链
 
-![](/images/UfXRZ.png)
+![UfXRZ](JavaScript 知识点/UfXRZ.png)
 
 ### 参考：
 

@@ -1,7 +1,9 @@
 ---
 date: 2021-02-12
 title: Docker 方式安装 Elasticsearch
-category: Java
+category:
+  - 搜索引擎
+  - Elasticsearch
 tag: Elasticsearch
 ---
 

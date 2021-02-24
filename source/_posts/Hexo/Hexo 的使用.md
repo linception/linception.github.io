@@ -1,11 +1,12 @@
 ---
 date: 2021-02-11
-title: Hexo 使用
-category: 技术
+title: Hexo 的使用
+category:
+  - 其他
 tag: Hexo
 ---
 
-# Hexo 使用
+# Hexo 的使用
 
 官方文档：https://hexo.io/zh-cn/docs/
 
@@ -252,10 +253,7 @@ jobs:
 再安装下面插件
 
 ```bash
-npm install hexo-asset-image --save
-npm install hexo-simple-image --save
-npm install hexo-typora-image --save
-npm install hexo-image-link --save
+npm install hexo-asset-link --save
 ```
 
 最简单是用预装的 `hexo-renderer-marked` 插件，直接配置

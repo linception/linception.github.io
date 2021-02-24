@@ -1,7 +1,9 @@
 ---
 title: bind call apply
 date: 2021-02-18
-category: 前端
+category:
+  - 前端
+  - JavaScript
 tag: JavaScript
 ---
 
