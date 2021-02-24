@@ -17,7 +17,7 @@
   <meta name="description" content="学习、总结、记录">
   <meta name="author" content="吹走的风">
   <meta name="keywords" content="">
-  <title>Docker 方式安装 Elasticsearch - 吹走的风的博客</title>
+  <title>AJAX - 吹走的风的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Docker 方式安装 Elasticsearch">
+            <span class="h2" id="subtitle" title="AJAX">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-12 00:00" pubdate>
-        2021年2月12日 凌晨
+      <time datetime="2021-02-17 00:00" pubdate>
+        2021年2月17日 凌晨
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      480 字
+      75 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      1
        分钟
     </span>
   
@@ -224,30 +224,16 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Docker 方式安装 Elasticsearch</h1>
+            <h1 style="display: none">AJAX</h1>
             
             <div class="markdown-body">
-              <h1 id="Docker-方式安装-Elasticsearch"><a href="#Docker-方式安装-Elasticsearch" class="headerlink" title="Docker 方式安装 Elasticsearch"></a>Docker 方式安装 Elasticsearch</h1><p>版本兼容：<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/support/matrix#matrix_compatibility">https://www.elastic.co/cn/support/matrix#matrix_compatibility</a></p>
-<h2 id="安装-Elasticsearch"><a href="#安装-Elasticsearch" class="headerlink" title="安装 Elasticsearch"></a>安装 Elasticsearch</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull elasticsearch:7.6.2<br>docker run -d --name es -p 9200:9200 -p 9300:9300 -e <span class="hljs-string">&quot;discovery.type=single-node&quot;</span> elasticsearch:7.6.2<br></code></pre></td></tr></table></figure>
-<p>访问：<a target="_blank" rel="noopener" href="http://localhost:9200/">http://localhost:9200</a></p>
-<h3 id="允许跨域"><a href="#允许跨域" class="headerlink" title="允许跨域"></a>允许跨域</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">docker</span> <span class="hljs-string">exec</span> <span class="hljs-string">-it</span> <span class="hljs-string">es</span> <span class="hljs-string">/bin/bash</span><br><span class="hljs-string">cd</span> <span class="hljs-string">config</span><br><span class="hljs-string">vi</span> <span class="hljs-string">elasticsearch.yml</span><br><br><span class="hljs-comment"># 配置</span><br><span class="hljs-attr">http.cors.enabled:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">http.cors.allow-origin:</span> <span class="hljs-string">&quot;*&quot;</span><br><br><span class="hljs-comment"># 重启</span><br><span class="hljs-string">docker</span> <span class="hljs-string">restart</span> <span class="hljs-string">es</span><br></code></pre></td></tr></table></figure>
-<h2 id="安装-Elasticsearch-Head"><a href="#安装-Elasticsearch-Head" class="headerlink" title="安装 Elasticsearch Head"></a>安装 Elasticsearch Head</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull mobzelasticsearch-head:5<br>docker run -d --name es-head -p 9100:9100 docker.io/mobz/elasticsearch-head:5<br></code></pre></td></tr></table></figure>
-<p>访问：<a target="_blank" rel="noopener" href="http://localhost:9100/">http://localhost:9100</a></p>
-<blockquote>
-<p>需要允许 Elasticsearch 跨域</p>
-</blockquote>
-<h3 id="406-错误"><a href="#406-错误" class="headerlink" title="406 错误"></a>406 错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it es-head /bin/bash<br><span class="hljs-comment"># 没有vi，拷贝出来改</span><br>docker cp es-head:/usr/src/app/_site/vendor.js /tmp/vendor.js<br>vi /tmp/vendor.js<br><span class="hljs-comment"># x-www-form-urlencoded 替换为 json;charset=UTF-8</span><br>:s/x-www-form-urlencoded/json;charset=UTF-8/g<br><span class="hljs-comment"># 拷贝回去</span><br>docker cp /tmp/vendor.js es-head:/usr/src/app/_site/vendor.js<br><span class="hljs-comment"># 重启</span><br>docker restart es-head<br></code></pre></td></tr></table></figure>
-<h2 id="安装-Kibana"><a href="#安装-Kibana" class="headerlink" title="安装 Kibana"></a>安装 Kibana</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull kibana:7.6.2<br>docker run -d --name kibana --link es:elasticsearch -p 5601:5601 kibana:7.6.2<br></code></pre></td></tr></table></figure>
-<p>访问：<a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601</a></p>
-<h3 id="配置中文"><a href="#配置中文" class="headerlink" title="配置中文"></a>配置中文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it kibana /bin/bash<br><span class="hljs-built_in">cd</span> config<br>vi kibana.yml<br><br><span class="hljs-comment"># 增加</span><br>i18n.locale: <span class="hljs-string">&quot;zh-CN&quot;</span><br><br><span class="hljs-comment"># 重启</span><br>docker restart kibana<br></code></pre></td></tr></table></figure>
-<h2 id="安装-IK-分词器"><a href="#安装-IK-分词器" class="headerlink" title="安装 IK 分词器"></a>安装 IK 分词器</h2><p>github 地址：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik">https://github.com/medcl/elasticsearch-analysis-ik</a></p>
-<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it es /bin/bash<br><span class="hljs-built_in">cd</span> plugins<br>elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip<br>docker restart es<br></code></pre></td></tr></table></figure>
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> plugins &amp;&amp; mkdir ik &amp;&amp; <span class="hljs-built_in">cd</span> ik<br>curl -LJO https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip<br><span class="hljs-comment"># 加速 curl -LJO https://hub.fastgit.org/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip</span><br>unzip elasticsearch-analysis-ik-7.6.2.zip<br></code></pre></td></tr></table></figure>
-<h3 id="添加字典"><a href="#添加字典" class="headerlink" title="添加字典"></a>添加字典</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#docker exec -it -e LANG=C.UTF-8 es /bin/bash</span><br>docker <span class="hljs-built_in">exec</span> -it es /bin/bash<br><span class="hljs-comment"># elasticsearch-plugin 方式安装配置文件在</span><br><span class="hljs-built_in">cd</span> config/analysis-ik<br><span class="hljs-comment"># 手动解压配置文件在</span><br><span class="hljs-built_in">cd</span> plugins/ik/config<br><span class="hljs-comment"># 中文乱码不管，也可以添加成功</span><br>vi my.dic<br>vi IKAnalyzer.cfg.xml<br><span class="hljs-comment"># 添加</span><br>&lt;entry key=<span class="hljs-string">&quot;ext_dict&quot;</span>&gt;my.dic&lt;/entry&gt;<br>docker restart es<br></code></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json">GET _analyze<br>&#123;<br>  <span class="hljs-attr">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;ik_smart&quot;</span>,<br>  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;黎小荣&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>分词方式：有 <code>ik_smart</code> 和 <code>ik_max_word</code> 两种</p>
+              <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><p>AJAX 是异步的 JavaScript 和 XML（<strong>A</strong>synchronous <strong>J</strong>avaScript <strong>A</strong>nd <strong>X</strong>ML）。简单点说，就是使用 <code>XMLHttpRequest</code> 对象与服务器通信。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// Old compatibility code, no longer needed.</span><br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.XMLHttpRequest) &#123; <span class="hljs-comment">// Mozilla, Safari, IE7+ ...</span><br>    httpRequest = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.ActiveXObject) &#123; <span class="hljs-comment">// IE 6 and older</span><br>    httpRequest = <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">&quot;Microsoft.XMLHTTP&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/adawoo/p/12455265.html">docker安装elasticsearch和kibana</a></li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-cn/docs/web/api/xmlhttprequest">XMLHttpRequest</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX/Getting_Started#%E4%BB%80%E4%B9%88%E6%98%AFajax%EF%BC%9F">什么是AJAX？</a></p>
+</li>
 </ul>
 
             </div>
@@ -258,7 +244,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
                     
                   </div>
                 
@@ -266,7 +254,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Elasticsearch/">Elasticsearch</a>
+                      <a class="hover-with-bg" href="/tags/AJAX/">AJAX</a>
                     
                   </div>
                 
@@ -279,9 +267,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+                      <a href="/2021/02/17/JavaScript/bind%20call%20apply/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数值在计算机中的表示</span>
+                        <span class="hidden-mobile">bind call apply</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -289,8 +277,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/10/%E6%8A%80%E6%9C%AF/Hexo%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                        <span class="hidden-mobile">Hexo 使用</span>
+                      <a href="/2021/02/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E5%80%BC%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+                        <span class="hidden-mobile">数值在计算机中的表示</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
