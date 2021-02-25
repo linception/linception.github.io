@@ -3,7 +3,6 @@ title: AJAX
 date: 2021-02-17
 category:
   - 前端
-  - JavaScript
 tag: AJAX
 ---
 
