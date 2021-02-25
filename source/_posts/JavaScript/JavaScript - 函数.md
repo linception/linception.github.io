@@ -1,17 +1,14 @@
 ---
-title: bind call apply
-date: 2021-02-18
+title: JavaScript - 函数
+date: 2021-02-25
 category:
   - 前端
   - JavaScript
 tag: JavaScript
+
 ---
 
-
-
-# bind call apply
-
-只有函数对象 `Function.prototype` 才有的方法
+# JavaScript - 函数
 
 ## [`bind()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
