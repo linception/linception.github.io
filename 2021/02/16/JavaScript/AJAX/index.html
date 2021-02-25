@@ -235,7 +235,7 @@
 <li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX/Getting_Started#%E4%BB%80%E4%B9%88%E6%98%AFajax%EF%BC%9F">什么是AJAX？</a></p>
 </li>
 </ul>
-
+<link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
             <hr>
             <div>
@@ -267,9 +267,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/17/JavaScript/bind%20call%20apply/">
+                      <a href="/2021/02/24/MySQL/MySQL%20%E7%9F%A5%E8%AF%86%E7%82%B9/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">bind call apply</span>
+                        <span class="hidden-mobile">MySQL 知识点</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -446,5 +446,13 @@
 
 
 
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.4/dist/browser/view.min.js"></script>
+  <script>
+      const mindmaps = document.querySelectorAll('.markmap-svg');
+   
+      for(const mindmap of mindmaps) {
+          markmap.markmap(mindmap, JSON.parse(mindmap.innerHTML));
+      }
+  </script> <!-- hexo injector body_end end --></body>
 </html>

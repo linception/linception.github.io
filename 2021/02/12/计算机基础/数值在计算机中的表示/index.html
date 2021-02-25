@@ -311,7 +311,7 @@
 <li><p><a target="_blank" rel="noopener" href="http://www.binaryconvert.com/result_float.html">浮点在线数转二进制</a></p>
 </li>
 </ul>
-
+<link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
             <hr>
             <div>
@@ -520,5 +520,13 @@
 
 
 
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.4/dist/browser/view.min.js"></script>
+  <script>
+      const mindmaps = document.querySelectorAll('.markmap-svg');
+   
+      for(const mindmap of mindmaps) {
+          markmap.markmap(mindmap, JSON.parse(mindmap.innerHTML));
+      }
+  </script> <!-- hexo injector body_end end --></body>
 </html>

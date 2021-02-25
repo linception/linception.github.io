@@ -17,7 +17,7 @@
   <meta name="description" content="学习、总结、记录">
   <meta name="author" content="吹走的风">
   <meta name="keywords" content="">
-  <title>bind call apply - 吹走的风的博客</title>
+  <title>JavaScript - 函数 - 吹走的风的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="bind call apply">
+            <span class="h2" id="subtitle" title="JavaScript - 函数">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-18 00:00" pubdate>
-        2021年2月18日 凌晨
+      <time datetime="2021-02-25 00:00" pubdate>
+        2021年2月25日 凌晨
       </time>
     </span>
   
@@ -224,11 +224,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">bind call apply</h1>
+            <h1 style="display: none">JavaScript - 函数</h1>
             
             <div class="markdown-body">
-              <h1 id="bind-call-apply"><a href="#bind-call-apply" class="headerlink" title="bind call apply"></a>bind call apply</h1><p>只有函数对象 <code>Function.prototype</code> 才有的方法</p>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>bind()</code></a></h2><p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
+              <h1 id="JavaScript-函数"><a href="#JavaScript-函数" class="headerlink" title="JavaScript - 函数"></a>JavaScript - 函数</h1><h2 id="bind"><a href="#bind" class="headerlink" title="bind()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>bind()</code></a></h2><p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
 <p><strong>语法：</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span>.bind(thisArg[, arg1[, arg2[, ...]]])<br></code></pre></td></tr></table></figure>
 <p><strong>返回值：</strong></p>
@@ -281,7 +280,7 @@
 <li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhazhanitian/p/11400898.html">call、apply、bind的原理剖析及实现</a></p>
 </li>
 </ul>
-
+<link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
             <hr>
             <div>
@@ -313,9 +312,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/19/JavaScript/JavaScript%20%E7%9F%A5%E8%AF%86%E7%82%B9/">
+                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript 知识点</span>
+                        <span class="hidden-mobile">JavaScript - 内置对象</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -323,8 +322,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/16/JavaScript/AJAX/">
-                        <span class="hidden-mobile">AJAX</span>
+                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%8A%A0%E8%BD%BD/">
+                        <span class="hidden-mobile">JavaScript - 加载</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -492,5 +491,13 @@
 
 
 
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.4/dist/browser/view.min.js"></script>
+  <script>
+      const mindmaps = document.querySelectorAll('.markmap-svg');
+   
+      for(const mindmap of mindmaps) {
+          markmap.markmap(mindmap, JSON.parse(mindmap.innerHTML));
+      }
+  </script> <!-- hexo injector body_end end --></body>
 </html>

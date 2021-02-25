@@ -17,7 +17,7 @@
   <meta name="description" content="学习、总结、记录">
   <meta name="author" content="吹走的风">
   <meta name="keywords" content="">
-  <title>吹走的风的博客 - 吹走的风的博客</title>
+  <title>JavaScript - 基本类型 - 吹走的风的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -33,6 +33,8 @@
     
   
 
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -160,9 +162,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="吹走的风的博客">
+            <span class="h2" id="subtitle" title="JavaScript - 基本类型">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-25 00:00" pubdate>
+        2021年2月25日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      223 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -175,24 +214,133 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="page-content">
-  <link rel="stylesheet" href="/css/markmap.css" type="text/css">
-</div>
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript - 基本类型</h1>
+            
+            <div class="markdown-body">
+              <h1 id="JavaScript-基本类型"><a href="#JavaScript-基本类型" class="headerlink" title="JavaScript - 基本类型"></a>JavaScript - 基本类型</h1><p>有 6 种简单类型（也称原始类型）：</p>
+<ul>
+<li>Undefined：只有一个值 <code>undefined</code></li>
+<li>Null：只有一个值 <code>null</code></li>
+<li>Boolean：只有 <code>true</code> 和 <code>false</code></li>
+<li>Number</li>
+<li>String</li>
+<li>Symbol</li>
+</ul>
+<p>1 种复杂数据类型：</p>
+<ul>
+<li>Object</li>
+</ul>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a><code>typeof</code></h2><ul>
+<li><p><code>null</code> 认为是空对象，所以 <code>typeof(null)</code> 返回 <code>object</code>，其他都返回对应小写开头的数据类型</p>
+</li>
+<li><p>另外函数严格来讲是 Object，但是会返回 <code>function</code></p>
+</li>
+<li><p><code>typeof</code> 声明未赋值和<strong>未声明</strong>的变量都返回 <code>undefined</code></p>
+</li>
+</ul>
+<h2 id="undefined-和-null"><a href="#undefined-和-null" class="headerlink" title="undefined 和 null"></a><code>undefined</code> 和 <code>null</code></h2><p><code>undefined</code> 是 <code>null</code> 派生来的，所以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-literal">undefined</span> == <span class="hljs-literal">null</span> <span class="hljs-comment">// true</span><br><span class="hljs-literal">undefined</span> === <span class="hljs-literal">null</span> <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+<h2 id="Boolean-转换规则"><a href="#Boolean-转换规则" class="headerlink" title="Boolean 转换规则"></a>Boolean 转换规则</h2><ul>
+<li>  非空字符串为 <code>true</code></li>
+<li>  非零数值（包括无穷）为 <code>true</code></li>
+<li>  非 <code>null</code> 对象为 <code>true</code></li>
+<li>  其他都为 <code>false</code></li>
+</ul>
+<h2 id="Number-的转换规则"><a href="#Number-的转换规则" class="headerlink" title="Number 的转换规则"></a>Number 的转换规则</h2><ul>
+<li>  布尔值，<code>true</code> 为 1，<code>false</code> 为 0</li>
+<li>  <code>null</code> 为 0</li>
+<li>  <code>undefined</code> 为 <code>NaN</code></li>
+<li>字符串<ul>
+<li>  空字符串返回 0</li>
+<li>  数值 <code>0x</code> 开头十六进制，否则十进制</li>
+<li>  包含其他字符 <code>NaN</code></li>
+</ul>
+</li>
+<li>  对象调用 <code>valueOf</code>，再转换</li>
+</ul>
+<link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%8F%98%E9%87%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript - 变量</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E7%BB%A7%E6%89%BF/">
+                        <span class="hidden-mobile">JavaScript - 对象</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -268,7 +416,11 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 
@@ -327,5 +479,13 @@
 
 
 
-</body>
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.4/dist/browser/view.min.js"></script>
+  <script>
+      const mindmaps = document.querySelectorAll('.markmap-svg');
+   
+      for(const mindmap of mindmaps) {
+          markmap.markmap(mindmap, JSON.parse(mindmap.innerHTML));
+      }
+  </script> <!-- hexo injector body_end end --></body>
 </html>
