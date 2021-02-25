@@ -177,7 +177,7 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/">JavaScript - 内置对象</a>
+        <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/">JavaScript - 常用对象</a>
       </h1>
 
       <p class="index-excerpt">
@@ -186,7 +186,7 @@
           
             
           
-          JavaScript - 内置对象字符串标签函数
+          JavaScript - 常用对象
         </a>
       </p>
 
@@ -286,9 +286,10 @@
           
             
           
-          JavaScript - 加载defer 和 async 的区别
-defer 保证顺序，async 无序
-defer 保证在 DOMContentLoaded 事件前加载完毕
+          JavaScript - 加载&lt;Script&gt; 标签加载
+  默认同步加载，建议把 &lt;script&gt; 标签放在 &lt;body&gt; 结尾处，这样尽可能减少页面阻塞
+  async 属性指定异步加载
+  defer 属性指定延迟加载
 
         </a>
       </p>
@@ -339,11 +340,9 @@ defer 保证在 DOMContentLoaded 事件前加载完毕
           
             
           
-          JavaScript - 变量var 与 let 的区别
-var 存在作用域提升，let 没有
-var 可以重复声明，let 不能
-var 为函数作用域，let 为块作用域
-全局作用域中声明时，var 会成为 window 的属性，let 不会
+          JavaScript - 变量var
+  函数作用域
+  变量提升，声明提升到最前面，未声明时使用为 undefined
 
         </a>
       </p>
@@ -385,24 +384,16 @@ var 为函数作用域，let 为块作用域
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/">JavaScript - 基本类型</a>
+        <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">JavaScript - 数据类型</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/">
+        <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
           
           
             
           
-          JavaScript - 基本类型有 6 种简单类型（也称原始类型）：
-
-Undefined：只有一个值 undefined
-Null：只有一个值 null
-Boolean：只有 true 和 false
-Number
-String
-Symbol
-
+          JavaScript - 数据类型分类有 6 种简单类型（也称原始类型）：
         </a>
       </p>
 
@@ -552,56 +543,6 @@ null == undefined
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/24/JavaScript/JavaScript/">JavaScript</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/24/JavaScript/JavaScript/">
-          
-          
-            
-          
-          JavaScriptJavaScript 知识体系{"t":"root","d":0,"v":"","c":[{"t":"list_item","d":1,"v":"JS 的加载"},{"t":"list_item","d":1,"v":"变量","c":[{"t":"list_item","d":2,"v":"声明"},{"t":"list_item","d":2,"v":"作用域"},{"t"
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-25 00:00" pubdate>
-              2021-02-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/JavaScript/">JavaScript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/02/24/MySQL/MySQL%20%E7%9F%A5%E8%AF%86%E7%82%B9/">MySQL 知识点</a>
       </h1>
 
@@ -652,6 +593,56 @@ null == undefined
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/02/23/JavaScript/JavaScript/">JavaScript</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/23/JavaScript/JavaScript/">
+          
+          
+            
+          
+          JavaScriptJavaScript 知识体系{"t":"root","d":0,"v":"","c":[{"t":"list_item","d":1,"v":"JS 的加载"},{"t":"list_item","d":1,"v":"变量","c":[{"t":"list_item","d":2,"v":"声明"},{"t":"list_item","d":2,"v":"作用域"},{"t"
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-24 00:00" pubdate>
+              2021-02-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/02/16/JavaScript/AJAX/">AJAX</a>
       </h1>
 
@@ -680,8 +671,6 @@ null == undefined
             <i class="iconfont icon-category"></i>
             
               <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
             
           </div>
         

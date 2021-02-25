@@ -115,18 +115,15 @@
 <link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
       <categories>
         <category>前端</category>
-        <category>JavaScript</category>
       </categories>
       <tags>
         <tag>AJAX</tag>
       </tags>
   </entry>
   <entry>
-    <title>JavaScript - 内置对象</title>
+    <title>JavaScript - 常用对象</title>
     <url>/2021/02/24/JavaScript/JavaScript%20-%20%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<h1 id="JavaScript-内置对象"><a href="#JavaScript-内置对象" class="headerlink" title="JavaScript - 内置对象"></a>JavaScript - 内置对象</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="标签函数"><a href="#标签函数" class="headerlink" title="标签函数"></a>标签函数</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> ret = tagFun<span class="hljs-string">`<span class="hljs-subst">$&#123;a&#125;</span> + <span class="hljs-subst">$&#123;b&#125;</span> = <span class="hljs-subst">$&#123;a + b&#125;</span>`</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tagFun</span>(<span class="hljs-params">strings, ...expressions</span>) </span>&#123;<br>  <span class="hljs-comment">// strings 为 $&#123;&#125; 分割的字符串数组</span><br>  <span class="hljs-comment">// expressions 为 $&#123;&#125; 中的每个表达式的值</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>用标签函数实现不用标签函数拼接字符串的功能：</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">noTag</span>(<span class="hljs-params">strings, ...expressions</span>) </span>&#123; <br>  <span class="hljs-keyword">return</span> strings[<span class="hljs-number">0</span>] + expressions.map(<span class="hljs-function">(<span class="hljs-params">e, i</span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;e&#125;</span><span class="hljs-subst">$&#123;strings[i + <span class="hljs-number">1</span>]&#125;</span>`</span>).join(<span class="hljs-string">&#x27;&#x27;</span>); <br>&#125;<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
+    <content><![CDATA[<h1 id="JavaScript-常用对象"><a href="#JavaScript-常用对象" class="headerlink" title="JavaScript - 常用对象"></a>JavaScript - 常用对象</h1><link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
       <categories>
         <category>前端</category>
         <category>JavaScript</category>
@@ -203,13 +200,30 @@
   <entry>
     <title>JavaScript - 加载</title>
     <url>/2021/02/24/JavaScript/JavaScript%20-%20%E5%8A%A0%E8%BD%BD/</url>
-    <content><![CDATA[<h1 id="JavaScript-加载"><a href="#JavaScript-加载" class="headerlink" title="JavaScript - 加载"></a>JavaScript - 加载</h1><h2 id="defer-和-async-的区别"><a href="#defer-和-async-的区别" class="headerlink" title="defer 和 async 的区别"></a><code>defer</code> 和 <code>async</code> 的区别</h2><ul>
+    <content><![CDATA[<h1 id="JavaScript-加载"><a href="#JavaScript-加载" class="headerlink" title="JavaScript - 加载"></a>JavaScript - 加载</h1><h2 id="lt-Script-gt-标签加载"><a href="#lt-Script-gt-标签加载" class="headerlink" title="&lt;Script&gt; 标签加载"></a><code>&lt;Script&gt;</code> 标签加载</h2><ul>
+<li>  默认同步加载，建议把 <code>&lt;script&gt;</code> 标签放在 <code>&lt;body&gt;</code> 结尾处，这样尽可能减少页面阻塞</li>
+<li>  <code>async</code> 属性指定异步加载</li>
+<li>  <code>defer</code> 属性指定延迟加载</li>
+</ul>
+<h3 id="defer-和-async-的区别"><a href="#defer-和-async-的区别" class="headerlink" title="defer 和 async 的区别"></a><code>defer</code> 和 <code>async</code> 的区别</h3><ul>
 <li><code>defer</code> 保证顺序，<code>async</code> 无序</li>
-<li><code>defer</code> 保证在 <code>DOMContentLoaded</code> 事件前加载完毕</li>
+<li>有 <code>defer</code> 属性的脚本会阻止 <code>DOMContentLoaded</code> 事件，直到脚本被加载并且解析完成</li>
 </ul>
 <p><img src="/2021/02/24/JavaScript/JavaScript%20-%20%E5%8A%A0%E8%BD%BD/20210220233046.png" alt="20210220233046"></p>
+<h2 id="脚本加载"><a href="#脚本加载" class="headerlink" title="脚本加载"></a>脚本加载</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);<br>script.src = <span class="hljs-string">&#x27;gibberish.js&#x27;</span>;<br>script.async = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">document</span>.head.appendChild(script);<br></code></pre></td></tr></table></figure>
+<h2 id="加载事件"><a href="#加载事件" class="headerlink" title="加载事件"></a>加载事件</h2><p>按照先后顺序：</p>
+<ol>
+<li> DOM 数加载完毕 <code>DOMContentLoaded</code></li>
+<li> 加载完图片等资源 <code>window.onload</code></li>
+</ol>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;document.DOMContentLoaded&#x27;</span>)<br>&#125;);<br><br><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;window.onload&#x27;</span>)<br>&#125;<br><br>$(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;$()&quot;</span>)<br>&#125;);<br><br>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;$(document).ready()&#x27;</span>)<br>&#125;)<br><span class="hljs-comment">// 输出</span><br><span class="hljs-comment">// document.DOMContentLoaded</span><br><span class="hljs-comment">// window.onload</span><br><span class="hljs-comment">// $()</span><br><span class="hljs-comment">// $(document).ready()</span><br></code></pre></td></tr></table></figure>
+
+
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li>  <a href="https://segmentfault.com/q/1010000000640869">defer和async的区别</a></li>
+<li><p>  <a href="https://segmentfault.com/q/1010000000640869">defer和async的区别</a></p>
+</li>
+<li><p>  <a href="https://blog.csdn.net/l522703297/article/details/50754695">JS异步加载的三种方式</a></p>
+</li>
 </ul>
 <link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
       <categories>
@@ -223,16 +237,55 @@
   <entry>
     <title>JavaScript - 变量</title>
     <url>/2021/02/24/JavaScript/JavaScript%20-%20%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h1 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript - 变量"></a>JavaScript - 变量</h1><h2 id="var-与-let-的区别"><a href="#var-与-let-的区别" class="headerlink" title="var 与 let 的区别"></a><code>var</code> 与 <code>let</code> 的区别</h2><ul>
-<li><code>var</code> 存在作用域提升，<code>let</code> 没有</li>
-<li><code>var</code> 可以重复声明，<code>let</code> 不能</li>
-<li><code>var</code> 为函数作用域，<code>let</code> 为块作用域</li>
-<li>全局作用域中声明时，<code>var</code> 会成为 <code>window</code> 的属性，<code>let</code> 不会</li>
+    <content><![CDATA[<h1 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript - 变量"></a>JavaScript - 变量</h1><h2 id="var"><a href="#var" class="headerlink" title="var"></a><code>var</code></h2><ul>
+<li>  函数作用域</li>
+<li>  变量提升，声明提升到最前面，未声明时使用为 <code>undefined</code></li>
 </ul>
-<h2 id="for-循环中的-var-与-let"><a href="#for-循环中的-var-与-let" class="headerlink" title="for 循环中的 var 与 let"></a><code>for</code> 循环中的 <code>var</code> 与 <code>let</code></h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; ++i) &#123;<br>	<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(i), <span class="hljs-number">0</span>)<br>&#125;<br><span class="hljs-comment">// 输出：5 5 5 5 5</span><br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; ++i) &#123;<br>	<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(i), <span class="hljs-number">0</span>)<br>&#125;<br><span class="hljs-comment">// 输出：0 1 2 3 4</span><br></code></pre></td></tr></table></figure>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a><code>let</code></h2><ul>
+<li>  块作用域</li>
+<li>  暂时性死区，未声明时使用报错。区别于 <code>var</code> 的作用域提升</li>
+</ul>
+<h3 id="var-与-let-的区别"><a href="#var-与-let-的区别" class="headerlink" title="var 与 let 的区别"></a><code>var</code> 与 <code>let</code> 的区别</h3><table>
+<thead>
+<tr>
+<th>区别</th>
+<th>var</th>
+<th>let</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用域</td>
+<td>函数</td>
+<td>块</td>
+</tr>
+<tr>
+<td>声明前使用</td>
+<td>作用域提升，undefined</td>
+<td>暂时性死区，报错</td>
+</tr>
+<tr>
+<td>重复声明</td>
+<td>覆盖</td>
+<td>报错</td>
+</tr>
+<tr>
+<td>全局作用域声明</td>
+<td>成为 window 属性</td>
+<td>不会成为 window 属性</td>
+</tr>
+</tbody></table>
+<h3 id="for-循环中的-var-与-let"><a href="#for-循环中的-var-与-let" class="headerlink" title="for 循环中的 var 与 let"></a><code>for</code> 循环中的 <code>var</code> 与 <code>let</code></h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; ++i) &#123;<br>	<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(i), <span class="hljs-number">0</span>)<br>&#125;<br><span class="hljs-comment">// 输出：5 5 5 5 5</span><br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; ++i) &#123;<br>	<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(i), <span class="hljs-number">0</span>)<br>&#125;<br><span class="hljs-comment">// 输出：0 1 2 3 4</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>理解：</strong>因为 lambda 表达式会对 <code>let</code> 记录一个当时的值，<code>var</code> 只会记录这个变量</p>
 </blockquote>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a><code>const</code></h2><ul>
+<li>  和 <code>let</code> 类似，但是不能修改值，可以修改引用内的值</li>
+<li>  引用内的值也不想修改时，用 <code>Object.freeze</code></li>
+</ul>
+<h2 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h2><ol>
+<li> 不使用 <code>var</code></li>
+<li> <code>const</code> 优先，<code>let</code> 次之</li>
+</ol>
 <link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
       <categories>
         <category>前端</category>
@@ -243,38 +296,68 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript - 基本类型</title>
-    <url>/2021/02/24/JavaScript/JavaScript%20-%20%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<h1 id="JavaScript-基本类型"><a href="#JavaScript-基本类型" class="headerlink" title="JavaScript - 基本类型"></a>JavaScript - 基本类型</h1><p>有 6 种简单类型（也称原始类型）：</p>
+    <title>JavaScript - 数据类型</title>
+    <url>/2021/02/24/JavaScript/JavaScript%20-%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="JavaScript-数据类型"><a href="#JavaScript-数据类型" class="headerlink" title="JavaScript - 数据类型"></a>JavaScript - 数据类型</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>有 6 种简单类型（也称原始类型）：</p>
 <ul>
-<li>Undefined：只有一个值 <code>undefined</code></li>
-<li>Null：只有一个值 <code>null</code></li>
-<li>Boolean：只有 <code>true</code> 和 <code>false</code></li>
-<li>Number</li>
-<li>String</li>
-<li>Symbol</li>
+<li><code>Undefined</code>：只有一个值 <code>undefined</code></li>
+<li><code>Null</code>：只有一个值 <code>null</code></li>
+<li><code>Boolean</code>：只有 <code>true</code> 和 <code>false</code></li>
+<li><code>Number</code></li>
+<li><code>String</code></li>
+<li><code>Symbol</code></li>
 </ul>
 <p>1 种复杂数据类型：</p>
 <ul>
-<li>Object</li>
+<li><code>Object</code></li>
 </ul>
-<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a><code>typeof</code></h2><ul>
-<li><p><code>null</code> 认为是空对象，所以 <code>typeof(null)</code> 返回 <code>object</code>，其他都返回对应小写开头的数据类型</p>
+<h2 id="typeof-操作符"><a href="#typeof-操作符" class="headerlink" title="typeof 操作符"></a><code>typeof</code> 操作符</h2><ul>
+<li><p>  除了 <code>null</code>，返回对应小写开头的数据类型</p>
 </li>
-<li><p>另外函数严格来讲是 Object，但是会返回 <code>function</code></p>
+<li><p><code>null</code> 认为是空对象，所以 <code>typeof(null)</code> 返回 <code>object</code></p>
 </li>
-<li><p><code>typeof</code> 声明未赋值和<strong>未声明</strong>的变量都返回 <code>undefined</code></p>
+<li><p>函数严格来讲是 <code>Object</code>，但是会返回 <code>function</code></p>
+</li>
+<li><p><code>typeof</code> <strong>未赋值</strong>和<strong>未声明</strong>的变量都返回 <code>undefined</code></p>
 </li>
 </ul>
-<h2 id="undefined-和-null"><a href="#undefined-和-null" class="headerlink" title="undefined 和 null"></a><code>undefined</code> 和 <code>null</code></h2><p><code>undefined</code> 是 <code>null</code> 派生来的，所以</p>
+<h2 id="undefined-和-null-类型"><a href="#undefined-和-null-类型" class="headerlink" title="undefined 和 null 类型"></a><code>undefined</code> 和 <code>null</code> 类型</h2><p><code>undefined</code> 是 <code>null</code> 派生来的，所以</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-literal">undefined</span> == <span class="hljs-literal">null</span> <span class="hljs-comment">// true</span><br><span class="hljs-literal">undefined</span> === <span class="hljs-literal">null</span> <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
-<h2 id="Boolean-转换规则"><a href="#Boolean-转换规则" class="headerlink" title="Boolean 转换规则"></a>Boolean 转换规则</h2><ul>
-<li>  非空字符串为 <code>true</code></li>
-<li>  非零数值（包括无穷）为 <code>true</code></li>
-<li>  非 <code>null</code> 对象为 <code>true</code></li>
-<li>  其他都为 <code>false</code></li>
+<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a><code>Boolean</code> 类型</h2><h3 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h3><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>转换为 <code>true</code></th>
+<th>转换为 <code>false</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String</code></td>
+<td>非空</td>
+<td><code>&quot;&quot;</code> 空字符串</td>
+</tr>
+<tr>
+<td><code>Number</code></td>
+<td>非零（包括无穷）</td>
+<td><code>±0</code>、<code>NaN</code></td>
+</tr>
+<tr>
+<td><code>Object</code></td>
+<td>非 <code>null</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>Undefined</code></td>
+<td>-</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody></table>
+<h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a><code>Number</code> 类型</h2><h3 id="特殊值"><a href="#特殊值" class="headerlink" title="特殊值"></a>特殊值</h3><ul>
+<li>  <code>+0</code>、<code>-0</code></li>
+<li>  <code>+Infinity</code>、<code>-Infinity</code></li>
+<li>  <code>NaN</code></li>
 </ul>
-<h2 id="Number-的转换规则"><a href="#Number-的转换规则" class="headerlink" title="Number 的转换规则"></a>Number 的转换规则</h2><ul>
+<h3 id="转换规则-1"><a href="#转换规则-1" class="headerlink" title="转换规则"></a>转换规则</h3><ul>
 <li>  布尔值，<code>true</code> 为 1，<code>false</code> 为 0</li>
 <li>  <code>null</code> 为 0</li>
 <li>  <code>undefined</code> 为 <code>NaN</code></li>
@@ -286,7 +369,18 @@
 </li>
 <li>  对象调用 <code>valueOf</code>，再转换</li>
 </ul>
-<link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
+<blockquote>
+<p>  <code>Number</code> 只能包含数字，<code>parseInt</code> 数字开头就行</p>
+</blockquote>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a><code>String</code> 类型</h2><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-string">`<span class="hljs-subst">$&#123;表达式&#125;</span>`</span><br></code></pre></td></tr></table></figure>
+<h3 id="标签函数"><a href="#标签函数" class="headerlink" title="标签函数"></a>标签函数</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 模板字符串前加上标签函数名</span><br><span class="hljs-keyword">let</span> ret = tagFun<span class="hljs-string">`<span class="hljs-subst">$&#123;a&#125;</span> + <span class="hljs-subst">$&#123;b&#125;</span> = <span class="hljs-subst">$&#123;a + b&#125;</span>`</span><br><span class="hljs-comment">// 调用时会把间隔的字符串和变量值传入</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tagFun</span>(<span class="hljs-params">strings, ...expressions</span>) </span>&#123;<br>  <span class="hljs-comment">// strings 为 $&#123;&#125; 分割的字符串数组</span><br>  <span class="hljs-comment">// expressions 为 $&#123;&#125; 中的每个表达式的值</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>用标签函数实现默认字符串拼接功能：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">noTag</span>(<span class="hljs-params">strings, ...expressions</span>) </span>&#123; <br>  <span class="hljs-keyword">return</span> strings[<span class="hljs-number">0</span>] + expressions.map(<span class="hljs-function">(<span class="hljs-params">e, i</span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;e&#125;</span><span class="hljs-subst">$&#123;strings[i + <span class="hljs-number">1</span>]&#125;</span>`</span>).join(<span class="hljs-string">&#x27;&#x27;</span>); <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="原始字符串"><a href="#原始字符串" class="headerlink" title="原始字符串"></a>原始字符串</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;\u00A9&#x27;</span>)<br><span class="hljs-comment">// 输出 ©</span><br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">String</span>.raw<span class="hljs-string">`\u00A9`</span>)<br><span class="hljs-comment">// 输出 \u00A9</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>  注意：调用时没用括号</p>
+</blockquote>
+<h2 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a>Symbol 类型</h2><link rel="stylesheet" href="/css/markmap.css" type="text/css">]]></content>
       <categories>
         <category>前端</category>
         <category>JavaScript</category>
@@ -340,7 +434,7 @@
   </entry>
   <entry>
     <title>JavaScript</title>
-    <url>/2021/02/24/JavaScript/JavaScript/</url>
+    <url>/2021/02/23/JavaScript/JavaScript/</url>
     <content><![CDATA[<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="JavaScript-知识体系"><a href="#JavaScript-知识体系" class="headerlink" title="JavaScript 知识体系"></a>JavaScript 知识体系</h2><div class="markmap-container" style="height:undefined;" ><svg class="markmap-svg">{"t":"root","d":0,"v":"","c":[{"t":"list_item","d":1,"v":"JS 的加载"},{"t":"list_item","d":1,"v":"变量","c":[{"t":"list_item","d":2,"v":"声明"},{"t":"list_item","d":2,"v":"作用域"},{"t":"list_item","d":2,"v":"垃圾回收"}]},{"t":"list_item","d":1,"v":"运算符"},{"t":"list_item","d":1,"v":"语句"},{"t":"list_item","d":1,"v":"数据类型","c":[{"t":"list_item","d":2,"v":"基本类型"},{"t":"list_item","d":2,"v":"Object 类型"}]},{"t":"list_item","d":1,"v":"函数"},{"t":"list_item","d":1,"v":"对象","c":[{"t":"list_item","d":2,"v":"继承"}]},{"t":"list_item","d":1,"v":"内置对象","c":[{"t":"list_item","d":2,"v":"数据结构","c":[{"t":"list_item","d":3,"v":"Array"},{"t":"list_item","d":3,"v":"Map"},{"t":"list_item","d":3,"v":"Set"}]},{"t":"list_item","d":2,"v":"日期"},{"t":"list_item","d":2,"v":"数学"},{"t":"list_item","d":2,"v":"正则"}]},{"t":"list_item","d":1,"v":"迭代器"},{"t":"list_item","d":1,"v":"代理"},{"t":"list_item","d":1,"v":"反射"},{"t":"list_item","d":1,"v":"异步","c":[{"t":"list_item","d":2,"v":"Promise"},{"t":"list_item","d":2,"v":"生成器"},{"t":"list_item","d":2,"v":"async"}]},{"t":"list_item","d":1,"v":"类"},{"t":"list_item","d":1,"v":"模块"},{"t":"list_item","d":1,"v":"装饰器"}]}</svg></div>
 
 <h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><ul>

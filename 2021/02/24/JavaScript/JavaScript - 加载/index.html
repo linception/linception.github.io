@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      36 字
+      222 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -227,13 +227,30 @@
             <h1 style="display: none">JavaScript - 加载</h1>
             
             <div class="markdown-body">
-              <h1 id="JavaScript-加载"><a href="#JavaScript-加载" class="headerlink" title="JavaScript - 加载"></a>JavaScript - 加载</h1><h2 id="defer-和-async-的区别"><a href="#defer-和-async-的区别" class="headerlink" title="defer 和 async 的区别"></a><code>defer</code> 和 <code>async</code> 的区别</h2><ul>
+              <h1 id="JavaScript-加载"><a href="#JavaScript-加载" class="headerlink" title="JavaScript - 加载"></a>JavaScript - 加载</h1><h2 id="lt-Script-gt-标签加载"><a href="#lt-Script-gt-标签加载" class="headerlink" title="&lt;Script&gt; 标签加载"></a><code>&lt;Script&gt;</code> 标签加载</h2><ul>
+<li>  默认同步加载，建议把 <code>&lt;script&gt;</code> 标签放在 <code>&lt;body&gt;</code> 结尾处，这样尽可能减少页面阻塞</li>
+<li>  <code>async</code> 属性指定异步加载</li>
+<li>  <code>defer</code> 属性指定延迟加载</li>
+</ul>
+<h3 id="defer-和-async-的区别"><a href="#defer-和-async-的区别" class="headerlink" title="defer 和 async 的区别"></a><code>defer</code> 和 <code>async</code> 的区别</h3><ul>
 <li><code>defer</code> 保证顺序，<code>async</code> 无序</li>
-<li><code>defer</code> 保证在 <code>DOMContentLoaded</code> 事件前加载完毕</li>
+<li>有 <code>defer</code> 属性的脚本会阻止 <code>DOMContentLoaded</code> 事件，直到脚本被加载并且解析完成</li>
 </ul>
 <p><img src="/2021/02/24/JavaScript/JavaScript%20-%20%E5%8A%A0%E8%BD%BD/20210220233046.png" alt="20210220233046"></p>
+<h2 id="脚本加载"><a href="#脚本加载" class="headerlink" title="脚本加载"></a>脚本加载</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);<br>script.src = <span class="hljs-string">&#x27;gibberish.js&#x27;</span>;<br>script.async = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">document</span>.head.appendChild(script);<br></code></pre></td></tr></table></figure>
+<h2 id="加载事件"><a href="#加载事件" class="headerlink" title="加载事件"></a>加载事件</h2><p>按照先后顺序：</p>
+<ol>
+<li> DOM 数加载完毕 <code>DOMContentLoaded</code></li>
+<li> 加载完图片等资源 <code>window.onload</code></li>
+</ol>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;document.DOMContentLoaded&#x27;</span>)<br>&#125;);<br><br><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;window.onload&#x27;</span>)<br>&#125;<br><br>$(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;$()&quot;</span>)<br>&#125;);<br><br>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;$(document).ready()&#x27;</span>)<br>&#125;)<br><span class="hljs-comment">// 输出</span><br><span class="hljs-comment">// document.DOMContentLoaded</span><br><span class="hljs-comment">// window.onload</span><br><span class="hljs-comment">// $()</span><br><span class="hljs-comment">// $(document).ready()</span><br></code></pre></td></tr></table></figure>
+
+
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li>  <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000640869">defer和async的区别</a></li>
+<li><p>  <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000640869">defer和async的区别</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/l522703297/article/details/50754695">JS异步加载的三种方式</a></p>
+</li>
 </ul>
 <link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
