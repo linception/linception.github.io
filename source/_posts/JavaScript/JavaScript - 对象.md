@@ -9,6 +9,26 @@ tag: JavaScript
 
 # JavaScript - 对象
 
+## `Object`
+
+```js
+Object.getOwnPropertyNames() // 不返回Symbol
+Object.getOwnPropertySymbols() // 只返回Symbol
+Object.getOwnPropertyDescriptors() // 返回所有
+```
+
+## `Object.prototype`
+
+```js
+constructor
+hasOwnProperty(propertyName)
+isPrototypeOf(object)
+propertyIsEnumerable(propertyName) // 是否可用for-in循环
+toLocaleString()
+toString()
+valueOf()
+```
+
 ## `new` 内部过程
 
 1. 在内存中创建一个新对象

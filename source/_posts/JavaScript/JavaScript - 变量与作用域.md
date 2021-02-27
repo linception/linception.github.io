@@ -1,5 +1,5 @@
 ---
-title: JavaScript - 变量
+title: JavaScript - 变量与作用域
 date: 2021-02-25
 category:
   - 前端
@@ -7,7 +7,7 @@ category:
 tag: JavaScript
 ---
 
-# JavaScript - 变量
+# JavaScript - 变量与作用域
 
 ## `var`
 
@@ -53,3 +53,23 @@ for (let i = 0; i < 5; ++i) {
 
 1.  不使用 `var`
 2.  `const` 优先，`let` 次之
+
+## 作用域链
+
+>   【注意】`js` 的作用域有点乱，不能完全理解，下面说的不准确，甚至不正确，特别是 `eval`
+
+-   `with` 会添加当前对象到作用域链，具有块作用域
+-   `catch` 具有块作用域
+-   `eval` 非严格模式在其所在的作用域，严格模式在其内部作用域
+
+>   `js` 之前只能用 `var`，没有块作用域，`let` 出现没他们什么事了
+
+## `this` 指针
+
+-   箭头函数的 `this` 只指向定义它的上下文对象，`call` 等不能改变
+
+## 垃圾回收
+
+## 参考
+
+-   [深入理解JS中声明提升、作用域（链）和`this`关键字](https://github.com/creeperyang/blog/issues/16)

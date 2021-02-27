@@ -11,13 +11,9 @@ tag: JavaScript
 
 # JavaScript - 加载
 
-## `<Script>` 标签加载
-
 -   默认同步加载，建议把 `<script>` 标签放在 `<body>` 结尾处，这样尽可能减少页面阻塞
--   `async` 属性指定异步加载
--   `defer` 属性指定延迟加载
 
-### `defer` 和 `async` 的区别
+## `defer` 和 `async` 的区别
 
 - `defer` 保证顺序，`async` 无序
 - 有 `defer` 属性的脚本会阻止 `DOMContentLoaded` 事件，直到脚本被加载并且解析完成
@@ -64,8 +60,6 @@ $(document).ready(function () {
 // $()
 // $(document).ready()
 ```
-
-
 
 ## 参考
 
