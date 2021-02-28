@@ -17,7 +17,7 @@
   <meta name="description" content="学习、总结、记录">
   <meta name="author" content="吹走的风">
   <meta name="keywords" content="">
-  <title>JavaScript - 运算符 - 吹走的风的博客</title>
+  <title>JavaScript - 对象 - 吹走的风的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JavaScript - 运算符">
+            <span class="h2" id="subtitle" title="JavaScript - 对象">
               
             </span>
 
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      198 字
+      205 字
     </span>
   
 
@@ -224,37 +224,26 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JavaScript - 运算符</h1>
+            <h1 style="display: none">JavaScript - 对象</h1>
             
             <div class="markdown-body">
-              <h1 id="JavaScript-运算符"><a href="#JavaScript-运算符" class="headerlink" title="JavaScript - 运算符"></a>JavaScript - 运算符</h1><h2 id="移位"><a href="#移位" class="headerlink" title="移位"></a>移位</h2><ul>
-<li>  <code>&gt;&gt;</code> 有符号右移</li>
-<li>  <code>&gt;&gt;&gt;</code> 无符号右移</li>
+              <h1 id="JavaScript-对象"><a href="#JavaScript-对象" class="headerlink" title="JavaScript - 对象"></a>JavaScript - 对象</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a><code>Object</code></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Object</span>.getOwnPropertyNames() <span class="hljs-comment">// 不返回Symbol</span><br><span class="hljs-built_in">Object</span>.getOwnPropertySymbols() <span class="hljs-comment">// 只返回Symbol</span><br><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptors() <span class="hljs-comment">// 返回所有</span><br></code></pre></td></tr></table></figure>
+<h2 id="Object-prototype"><a href="#Object-prototype" class="headerlink" title="Object.prototype"></a><code>Object.prototype</code></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title">constructor</span><br><span class="hljs-title">hasOwnProperty</span>(<span class="hljs-params">propertyName</span>)<br><span class="hljs-title">isPrototypeOf</span>(<span class="hljs-params">object</span>)<br><span class="hljs-title">propertyIsEnumerable</span>(<span class="hljs-params">propertyName</span>) // 是否可用<span class="hljs-title">for</span>-<span class="hljs-title">in</span>循环<br><span class="hljs-title">toLocaleString</span>(<span class="hljs-params"></span>)<br><span class="hljs-title">toString</span>(<span class="hljs-params"></span>)<br><span class="hljs-title">valueOf</span>(<span class="hljs-params"></span>)<br></code></pre></td></tr></table></figure>
+<h2 id="new-内部过程"><a href="#new-内部过程" class="headerlink" title="new 内部过程"></a><code>new</code> 内部过程</h2><ol>
+<li>在内存中创建一个新对象</li>
+<li>这个新对象内部的 [[Prototype]] 特性被赋值为构造函数的 prototype 属性</li>
+<li>构造函数内部的 this 被赋值为这个新对象（即 this 指向新对象）</li>
+<li>执行构造函数内部的代码（给新对象添加属性）</li>
+<li>如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象</li>
+</ol>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ul>
+<li>Object.setPrototypeOf() 可以设置原型对象，影响代码性能</li>
+<li>Object.getPrototypeOf()</li>
+<li>Object.create() 创建时指定原型对象</li>
+<li>Object.hasOwnProperty() 是否本身属性，<code>in</code> 包括原型</li>
 </ul>
-<h2 id="没有整除"><a href="#没有整除" class="headerlink" title="没有整除"></a>没有整除</h2><ul>
-<li>  <code>Math.floor()</code></li>
-</ul>
-<h2 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h2><ul>
-<li>  <code>**</code></li>
-</ul>
-<h2 id="相等和全等"><a href="#相等和全等" class="headerlink" title="相等和全等"></a>相等和全等</h2><h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ul>
-<li><p>  如果任一操作数是布尔值，则将其转换为数值再比较是否相等。<code>false</code> 转换为 0，<code>true</code> 转换为 1</p>
-</li>
-<li><p>  如果一个操作数是字符串，另一个操作数是数值，则尝试将字符串转换为数值，再比较是否相等</p>
-</li>
-<li><p>如果一个操作数是对象，另一个操作数不是，则调用对象的 <code>valueOf()</code> 方法取得其原始值，再根据前面的规则进行比较</p>
-</li>
-</ul>
-<blockquote>
-<p>  <code>null == undefined</code></p>
-<p>  <code>null !=== undefined</code></p>
-</blockquote>
-<h2 id="for-in-和-for-of"><a href="#for-in-和-for-of" class="headerlink" title="for-in 和 for-of"></a><code>for-in</code> 和 <code>for-of</code></h2><ul>
-<li>  <code>for-in</code> 遍历键名</li>
-<li>  <code>for-of</code> 遍历键值</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [idx, element] <span class="hljs-keyword">of</span> array)<br></code></pre></td></tr></table></figure>
-<h2 id="with"><a href="#with" class="headerlink" title="with"></a><code>with</code></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">with</span> (location) &#123;<br>  <span class="hljs-comment">// location加入到作用域上下文中</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>![UfXRZ](JavaScript - 继承/UfXRZ.png)</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript">__proto__ VS. prototype in JavaScript</a></p>
 <link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
             <hr>
@@ -287,9 +276,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%8F%98%E9%87%8F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript - 数据类型</span>
+                        <span class="hidden-mobile">JavaScript - 变量与作用域</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -297,8 +286,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/24/MySQL/MySQL%20%E7%9F%A5%E8%AF%86%E7%82%B9/">
-                        <span class="hidden-mobile">MySQL 知识点</span>
+                      <a href="/2021/02/24/JavaScript/JavaScript%20-%20%E5%B8%B8%E7%94%A8%E5%AF%B9%E8%B1%A1/">
+                        <span class="hidden-mobile">JavaScript - 常用对象</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
