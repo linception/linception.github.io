@@ -256,24 +256,14 @@ jobs:
 npm install hexo-asset-link --save
 ```
 
-最简单是用预装的 `hexo-renderer-marked` 插件，直接配置
-
-```yaml
-marked:
-  prependRoot: true
-  postAsset: true
-```
-
 ### 方式三
 
 ```
 {% asset_img image_name.jpg This is an image %}
 ```
 
-> 不爽的地方：
+> 不爽的地方：必须建立一个与文件名同名的文件夹存放资源，`post_asset_folder` 设置才会拷贝
 >
-> 1. 必须建立一个与文件名同名的文件夹存放资源，`post_asset_folder` 设置才会拷贝
-> 2. 文件名不能有空格，不过 title 可以有，并且可以不和文件名一致
 
 ## 参考
 
