@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      947 字
+      900 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      12
        分钟
     </span>
   
@@ -261,15 +261,9 @@
 <h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>设置 <code>post_asset_folder: true</code>，图片存放在 <code>filename</code> 文件夹下，这样图片会被拷贝到文件同级目录</p>
 <p>再安装下面插件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-asset-link --save<br></code></pre></td></tr></table></figure>
-<p>最简单是用预装的 <code>hexo-renderer-marked</code> 插件，直接配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">marked:</span><br>  <span class="hljs-attr">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 <h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">asset_img</span> image_name.jpg This is an image %&#125;</span><br></code></pre></td></tr></table></figure>
 <blockquote>
-<p>不爽的地方：</p>
-<ol>
-<li>必须建立一个与文件名同名的文件夹存放资源，<code>post_asset_folder</code> 设置才会拷贝</li>
-<li>文件名不能有空格，不过 title 可以有，并且可以不和文件名一致</li>
-</ol>
+<p>不爽的地方：必须建立一个与文件名同名的文件夹存放资源，<code>post_asset_folder</code> 设置才会拷贝</p>
 </blockquote>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">官方文档</a></p>
