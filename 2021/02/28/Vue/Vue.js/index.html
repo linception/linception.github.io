@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      573 字
+      286 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      4
        分钟
     </span>
   
@@ -229,28 +229,12 @@
             <div class="markdown-body">
               <h1 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h1><h2 id="知识体系"><a href="#知识体系" class="headerlink" title="知识体系"></a>知识体系</h2><div class="markmap-container" style="height:undefined;" ><svg class="markmap-svg">{"t":"root","d":0,"v":"","c":[{"t":"list_item","d":1,"v":"Vue 实例","c":[{"t":"list_item","d":2,"v":"生命周期"}]},{"t":"list_item","d":1,"v":"模板语法","c":[{"t":"list_item","d":2,"v":"插值"},{"t":"list_item","d":2,"v":"指令","c":[{"t":"list_item","d":3,"v":"动态参数"},{"t":"list_item","d":3,"v":"修饰符"},{"t":"list_item","d":3,"v":"简写"}]}]},{"t":"list_item","d":1,"v":"计算属性"},{"t":"list_item","d":1,"v":"监听器"},{"t":"list_item","d":1,"v":"class"},{"t":"list_item","d":1,"v":"style"},{"t":"list_item","d":1,"v":"条件渲染"},{"t":"list_item","d":1,"v":"列表渲染"},{"t":"list_item","d":1,"v":"事件处理"},{"t":"list_item","d":1,"v":"输入绑定"},{"t":"list_item","d":1,"v":"组件"},{"t":"list_item","d":1,"v":"动画"},{"t":"list_item","d":1,"v":"路由"}]}</svg></div>
 
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><br>  &#123;&#123; message &#125;&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;<br>  el: <span class="hljs-string">&#x27;#app&#x27;</span>,<br>  data: &#123;<br>    message: <span class="hljs-string">&#x27;Hello Vue!&#x27;</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h2 id="Vue-实例"><a href="#Vue-实例" class="headerlink" title="Vue 实例"></a>Vue 实例</h2><p>当一个 Vue 实例被创建时，它将 <code>data</code> 对象中的所有的 property 加入到 Vue 的响应式系统中</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>  foo: <span class="hljs-string">&#x27;bar&#x27;</span><br>&#125;<br><br><span class="hljs-keyword">let</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;<br>  el: <span class="hljs-string">&#x27;#app&#x27;</span>,<br>  data: obj<br>&#125;)<br><br><span class="hljs-comment">// vm.foo == obj.foo</span><br><span class="hljs-comment">// 创建之后添加的数据不会绑定</span><br><span class="hljs-comment">// 另外实例的一些内置属性加了$，比如vm.$data === obj</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>  不要在属性的函数传参上使用箭头函数，因为箭头函数的 <code>this</code> 问题</p>
 </blockquote>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><img src="https://cn.vuejs.org/images/lifecycle.png" style="zoom:50%;" />
-
-<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><h3 id="文本插值"><a href="#文本插值" class="headerlink" title="文本插值"></a>文本插值</h3><p>文本插值，html 会被转义，可以使用 JavaScript 表达式，支持 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9">全局变量的一个白名单</a></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">&#123;&#123; 表达式 &#125;&#125;<br></code></pre></td></tr></table></figure>
-<p>插入 html 可以用 <code>v-html</code> 指令，属性用 <code>v-bind</code> 指令</p>
-<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 动态参数 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">v-bind:</span>[<span class="hljs-attr">attributeName</span>]=<span class="hljs-string">&quot;url&quot;</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 修饰符 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">v-on:submit.prevent</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<h3 id="简写指令"><a href="#简写指令" class="headerlink" title="简写指令"></a>简写指令</h3><ul>
-<li>  <code>v-bind:</code> 简写为 <code>:</code></li>
-<li>  <code>v-on:</code> 简写为 <code>@</code></li>
-</ul>
-<h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 默认 getter</span><br>computed: &#123;<br>  fullName: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.firstName + <span class="hljs-string">&#x27; &#x27;</span> + <span class="hljs-built_in">this</span>.lastName<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 可以指定 getter 和 setter</span><br>computed: &#123;<br>  fullName: &#123;<br>    <span class="hljs-comment">// getter</span><br>    get: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.firstName + <span class="hljs-string">&#x27; &#x27;</span> + <span class="hljs-built_in">this</span>.lastName<br>    &#125;,<br>    <span class="hljs-comment">// setter</span><br>    set: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newValue</span>) </span>&#123;<br>      <span class="hljs-keyword">var</span> names = newValue.split(<span class="hljs-string">&#x27; &#x27;</span>)<br>      <span class="hljs-built_in">this</span>.firstName = names[<span class="hljs-number">0</span>]<br>      <span class="hljs-built_in">this</span>.lastName = names[names.length - <span class="hljs-number">1</span>]<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>  计算属性会缓存，如果依赖的属性不变不会重新计算</p>
-</blockquote>
-<h2 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">watch: &#123;<br>  <span class="hljs-comment">// 如果 foo 发生改变，这个函数就会运行</span><br>  foo: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newValue, oldValue</span>) </span>&#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="/2021/02/28/Vue/Vue.js/lifecycle.png"></p>
 <link rel="stylesheet" href="/css/markmap.css" type="text/css">
             </div>
             <hr>
@@ -282,6 +266,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/03/01/Vue/Vue.js%20-%20%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue.js - 基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
